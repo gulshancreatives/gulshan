@@ -54,15 +54,6 @@ window.ALL_PROJECTS = [
   ]
  },
  {
-  "id": "project-4",
-  "title": "NavAI",
-  "type": "Branding",
-  "conceptual": false,
-  "pinned": false,
-  "cover": "",
-  "blocks": []
- },
- {
   "id": "project-5",
   "title": "NavAI",
   "type": "Branding",
