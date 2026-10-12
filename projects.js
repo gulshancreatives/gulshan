@@ -52,14 +52,5 @@ window.ALL_PROJECTS = [
     "media": ""
    }
   ]
- },
- {
-  "id": "project-6",
-  "title": "NavAI",
-  "type": "Branding",
-  "conceptual": false,
-  "pinned": false,
-  "cover": "",
-  "blocks": []
  }
 ];
