@@ -1,5 +1,6 @@
 (function () {
   var root = document.documentElement;
+  var lenis = null;
   var page = document.body.getAttribute('data-page');
   var all = window.ALL_PROJECTS || [];
 
@@ -95,10 +96,28 @@
                  (b.heading ? '<h2 class="t-h"' + style(b.headingSize, b.headingWeight, 40, 400) + '>' + esc(b.heading) + '</h2>' : '') +
                  '<p class="t-b"' + style(b.bodySize, b.bodyWeight, 20, 400) + '>' + esc(b.body) + '</p></div></div>';
         }
-        return '<div class="blk blk--slide">' + m + '</div>';   /* default: "slide" */
+        var ar = b.ar ? ' style="aspect-ratio:' + Number(b.ar) + '"' : '';
+        return '<div class="blk blk--slide"><div class="blk__media"' + ar + '>' + media(b.media, p.title, b.poster) + '</div></div>';   /* default: "slide" */
       }).join('');
     }
 
+  }
+
+  /* ---- Full-width cards follow the natural shape of their image/video ---- */
+  function natural(el, w, h) { if (w && h) { var box = el.closest('.blk--slide .blk__media'); if (box) box.style.aspectRatio = w + ' / ' + h; } }
+  document.querySelectorAll('.blk--slide img, .blk--slide video').forEach(function (el) {
+    if (el.tagName === 'IMG') { if (el.complete) natural(el, el.naturalWidth, el.naturalHeight); else el.addEventListener('load', function () { natural(el, el.naturalWidth, el.naturalHeight); }); }
+    else { if (el.videoWidth) natural(el, el.videoWidth, el.videoHeight); else el.addEventListener('loadedmetadata', function () { natural(el, el.videoWidth, el.videoHeight); }); }
+  });
+
+  /* ---- Phone menu (hamburger) ---- */
+  var burger = document.getElementById('navBurger'), scrim = document.getElementById('navScrim');
+  function menu(open) { document.body.classList.toggle('menu-open', open); if (burger) burger.setAttribute('aria-expanded', open); if (lenis) { open ? lenis.stop() : lenis.start(); } }
+  if (burger) {
+    burger.addEventListener('click', function () { menu(!document.body.classList.contains('menu-open')); });
+    scrim.addEventListener('click', function () { menu(false); });
+    document.querySelectorAll('.nav__links a').forEach(function (a) { a.addEventListener('click', function () { menu(false); }); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 768) menu(false); });
   }
 
   /* ---- Top bar: hides/reappears on scroll, on every page ---- */
@@ -119,7 +138,6 @@
   setNavH(); onScroll();
 
   /* ---- Smooth scrolling (Lenis) ---- */
-  var lenis = null;
   if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
     (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(0);
