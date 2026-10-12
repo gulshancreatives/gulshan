@@ -119,9 +119,17 @@ function addMedia(file) {
   }
   return p.then(function () {
     var path = 'images/projects/' + ed.proj.id + '/' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5) + '.' + ext;
-    pending[path] = { blob: blob }; return path;
+    pending[path] = { blob: blob }; return dims(blob, isV).then(function (ar) { pending[path].ar = ar; return path; });
   });
 }
+function dims(blob, isV) {
+  return new Promise(function (res) {
+    var u = URL.createObjectURL(blob), done = function (w, h) { URL.revokeObjectURL(u); res(w && h ? Math.round(w / h * 10000) / 10000 : null); };
+    if (isV) { var v = document.createElement('video'); v.preload = 'metadata'; v.muted = true; v.onloadedmetadata = function () { done(v.videoWidth, v.videoHeight); }; v.onerror = function () { done(); }; v.src = u; }
+    else { var i = new Image(); i.onload = function () { done(i.naturalWidth, i.naturalHeight); }; i.onerror = function () { done(); }; i.src = u; }
+  });
+}
+function arOf(path) { return pending[path] && pending[path].ar || undefined; }
 function addAll(files) { var out = [], p = Promise.resolve(); files.forEach(function (f) { p = p.then(function () { return addMedia(f); }).then(function (x) { out.push(x); }); }); return p.then(function () { return out; }); }
 
 /* ---------- icons ---------- */
@@ -133,7 +141,7 @@ var BAR = '<div class="bar">' + [
   ['img', IMG, 'Add image'], ['vid', PLAY, 'Add video'], ['t1', 'T', 'Text – one column'], ['t2', 'T/T', 'Text – two columns'],
   ['side', IMG + '<span>/T</span>', 'Image or video beside text'], ['embed', '&lt;/&gt;', 'Embed content']
 ].map(function (b) { return '<button data-act="ins-' + b[0] + '" title="' + b[2] + '">' + b[1] + '</button>'; }).join('') + '</div>';
-var NAV = '<header class="anav"><nav><a href="#/">Dashboard</a><a href="../work.html">Work</a><a href="../index.html#contact">About me</a><a href="../index.html#contact">Contact</a></nav><button class="lnk out" data-act="logout">Log out</button></header>';
+var NAV = '<header class="anav"><button class="lnk out" data-act="logout">Log out</button></header>';
 function sw(cls, on) { return '<label class="sw"><input type="checkbox" class="' + cls + '"' + (on ? ' checked' : '') + '><i></i></label>'; }
 
 /* ---------- login ---------- */
@@ -168,7 +176,7 @@ function viewAuth() {
 /* ---------- dashboard ---------- */
 function card(p, list) {
   return '<div class="pc" data-id="' + esc(p.id) + '" data-list="' + list + '">' + (list === 'live' ? '<div class="pc__drag"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : '') +
-    '<div class="pc__thumb">' + mediaEl(p.cover) + '</div><div class="pc__body"><div class="top"><button class="btn sm" data-act="edit">' + (list === 'live' ? 'Edit project' : 'Edit draft') + '</button></div>' +
+    '<div class="pc__thumb">' + mediaEl(p.cover) + '</div><div class="pc__body"><div class="top"><button class="btn sm del" data-act="delcard">Delete project</button><button class="btn sm" data-act="edit">' + (list === 'live' ? 'Edit project' : 'Edit draft') + '</button></div>' +
     '<label class="l">Project name</label><input type="text" class="f-title" value="' + esc(p.title) + '">' +
     '<div class="opts"><div>Pin to homepage ' + sw('f-pin', p.pinned) + '</div><div>Personal project ' + sw('f-con', p.conceptual) + '</div></div>' +
     '<label class="l">Project tags</label><input type="text" class="f-type" placeholder="e.g. Branding, UX" value="' + esc(p.type) + '"></div></div>';
@@ -217,7 +225,7 @@ function sideCell(c, which) {
 }
 function blockHTML(b) {
   var inner;
-  if (b.type === 'slide') inner = '<div class="blk"><div class="blk__media">' + mediaEl(b.media) + '</div>' + tools('Replace content') + '</div>';
+  if (b.type === 'slide') inner = '<div class="blk"><div class="blk__media nat"' + (b.ar ? ' style="aspect-ratio:' + Number(b.ar) + '"' : '') + '>' + mediaEl(b.media) + '</div>' + tools('Replace content') + '</div>';
   else if (b.type === 'embed') inner = '<div class="blk"><div class="blk__media"><iframe src="' + esc(b.src) + '" title="Embed preview"></iframe></div>' + tools('Edit embed') + '</div>';
   else if (b.type === 'text1') inner = '<div class="blk">' + tools() + tcell(b, '', '', true) + '</div>';
   else if (b.type === 'text2') inner = '<div class="blk">' + tools() + '<div class="cols">' + tcell(b.left, 'left', '', true) + tcell(b.right, 'right') + '</div></div>';
@@ -234,7 +242,7 @@ function openEditor(id) {
 }
 function renderEditor() {
   var p = ed.proj, y = window.scrollY;
-  app.innerHTML = NAV + '<div class="ehead"><h1>' + (p.title ? esc(p.title) : 'Create project') + '</h1><div class="acts">' + (ed.isNew ? '' : '<button class="lnk" data-act="delproj">Delete project</button>') +
+  app.innerHTML = NAV + '<div class="ehead"><h1>' + (p.title ? esc(p.title) : 'Create project') + '</h1><div class="acts"><a class="lnk" href="#/">← Back to projects</a>' + (ed.isNew ? '' : '<button class="lnk" data-act="delproj">Delete project</button>') +
     '<button class="btn grey" data-act="draft">Save as draft</button><button class="btn" data-act="publish">' + (ed.isDraft || ed.isNew ? 'Publish project' : 'Publish changes') + '</button></div></div>' +
     (p.cover ? '<div class="cover wrap" id="cover"><div style="position:absolute;inset:0">' + mediaEl(p.cover) + '</div><div class="tools"><button class="tb" data-act="pen">' + PEN + '</button><div class="menu" hidden><button data-act="cover-pick">Replace cover</button></div></div></div><div id="coverbar">' + BAR + '</div>'
       : '<div class="up"><div><div><h3>Upload cover</h3><p>You can upload jpeg, png or video here</p></div><button class="btn" data-act="cover-pick">Select Files</button></div></div>') +
@@ -262,7 +270,7 @@ function insert(idx, blocks) { Array.prototype.splice.apply(ed.proj.blocks, [idx
 function addSlides(files, idx) {
   files = files.filter(function (f) { return /^(image|video)\//.test(f.type); }); if (!files.length) return;
   busy('Preparing files…');
-  addAll(files).then(function (paths) { insert(idx, paths.map(function (p) { return newKey({ type: 'slide', media: p }); })); }).catch(function (e) { toast(e.message, true); }).then(function () { busy(); });
+  addAll(files).then(function (paths) { insert(idx, paths.map(function (p) { return newKey({ type: 'slide', media: p, ar: arOf(p) }); })); }).catch(function (e) { toast(e.message, true); }).then(function () { busy(); });
 }
 
 /* ---------- publish / draft ---------- */
@@ -307,6 +315,16 @@ function finalize(mode, vals) {
     })
     .catch(function (e) { data = saved; toast('Could not save: ' + e.message, true); }).then(function () { busy(); });
 }
+function delCard(id) {
+  var p = data.live.concat(data.drafts).filter(function (x) { return x.id === id; })[0];
+  if (!confirm('Delete "' + (p && p.title || 'this project') + '"? This cannot be undone.')) return;
+  var saved = { live: data.live, drafts: data.drafts };
+  data.live = data.live.filter(function (x) { return x.id !== id; }); data.drafts = data.drafts.filter(function (x) { return x.id !== id; });
+  busy('Deleting…');
+  commit([{ path: 'projects.js', text: projectsJS() }, { path: 'drafts.js', text: draftsJS() }], 'Delete project')
+    .then(function () { dirty = false; toast('Project deleted.'); dashboard(); })
+    .catch(function (e) { data = saved; toast('Could not delete: ' + e.message, true); }).then(function () { busy(); });
+}
 function delProject() {
   if (!confirm('Delete this project from your website? This cannot be undone.')) return;
   var saved = { live: data.live, drafts: data.drafts };
@@ -317,6 +335,9 @@ function delProject() {
     .catch(function (e) { data = saved; toast('Could not delete: ' + e.message, true); }).then(function () { busy(); });
 }
 
+document.addEventListener('load', function (e) { var t = e.target; if (t.tagName === 'IMG' && t.parentNode.classList && t.parentNode.classList.contains('nat')) t.parentNode.style.aspectRatio = t.naturalWidth + ' / ' + t.naturalHeight; }, true);
+document.addEventListener('loadedmetadata', function (e) { var t = e.target; if (t.tagName === 'VIDEO' && t.parentNode.classList && t.parentNode.classList.contains('nat') && t.videoWidth) t.parentNode.style.aspectRatio = t.videoWidth + ' / ' + t.videoHeight; }, true);
+
 /* ---------- events ---------- */
 function ctxBlock(el) { var w = el.closest('.wrap'); return w ? ed.proj.blocks.filter(function (b) { return b._k === w.dataset.k; })[0] : null; }
 function cellOf(b, el) { var c = el.closest('[data-cell]'); var w = c ? c.dataset.cell : ''; return { w: w, c: w ? b[w] : b }; }
@@ -326,6 +347,7 @@ app.addEventListener('click', function (e) {
   var act = a.dataset.act, b = ed && ctxBlock(a), idx = ed ? (b ? ed.proj.blocks.indexOf(b) + 1 : 0) : 0;
   if (act === 'logout') { sessionStorage.removeItem('adminSession'); cfg = null; viewAuth(); }
   else if (act === 'reset') { if (confirm('This removes the saved login from this device. You will need your GitHub token again.')) { localStorage.removeItem('adminVault'); viewAuth(); } }
+  else if (act === 'delcard') delCard(a.closest('.pc').dataset.id);
   else if (act === 'new') location.hash = '#/new';
   else if (act === 'edit') location.hash = '#/edit/' + a.closest('.pc').dataset.id;
   else if (act === 'discard') { busy('Reloading…'); load().then(dashboard).then(function () { busy(); }); }
@@ -342,7 +364,7 @@ app.addEventListener('click', function (e) {
   else if (act === 'del') { if (confirm('Delete this card and its content?')) { ed.proj.blocks.splice(ed.proj.blocks.indexOf(b), 1); renderEditor(); } }
   else if (act === 'replace') {
     if (b.type === 'embed') { var s2 = embedSrc(prompt('Paste a link or embed code:', b.src)); if (s2) { b.src = s2; renderEditor(); } }
-    else pick('image/*,video/*').then(withMedia(function (p) { b.media = p; renderEditor(); }));
+    else pick('image/*,video/*').then(withMedia(function (p) { b.media = p; b.ar = arOf(p); renderEditor(); }));
   }
   else if (act === 'cellreset') { b[cellOf(b, a).w] = { kind: null }; renderEditor(); }
   else if (act === 'celltext') { b[cellOf(b, a).w] = { kind: 'text', text: '', size: 20, weight: 400 }; renderEditor(); }
