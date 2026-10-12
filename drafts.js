@@ -1,2 +1,2 @@
-/* Managed by the admin panel at /admin. Draft projects are stored here and are not shown on the site. */
+/* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.DRAFT_PROJECTS = [];
