@@ -6,28 +6,17 @@ window.ALL_PROJECTS = [
   "type": "Branding",
   "conceptual": false,
   "pinned": true,
-  "cover": "images/navai-cover.webp",
+  "cover": "images/projects/navai/mv5lk577yx8.mp4",
   "blocks": [
    {
     "type": "slide",
-    "media": ""
-   },
-   {
-    "type": "text2",
-    "left": {
-     "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-     "size": 40,
-     "weight": 400
-    },
-    "right": {
-     "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-     "size": 20,
-     "weight": 400
-    }
+    "media": "images/projects/navai/mv5lkuc3pp2.mp4",
+    "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": ""
+    "media": "images/projects/navai/mv5lls8zutm.mp4",
+    "ar": 1.7778
    },
    {
     "type": "side",
