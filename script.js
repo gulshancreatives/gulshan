@@ -32,6 +32,19 @@
     return ' style="--s:' + (size || dsize) + ';--w:' + (weight || dweight) + '"';
   }
 
+  /* ---- Smooth page changes: fade out, then open the next page (which fades in) ---- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    if (a.target && a.target !== '_self') return;
+    var u; try { u = new URL(a.href, location.href); } catch (er) { return; }
+    if (u.origin !== location.origin || (u.pathname === location.pathname && u.search === location.search) || /^mailto:|^tel:/.test(a.href)) return;
+    e.preventDefault();
+    document.body.classList.add('is-leaving');
+    setTimeout(function () { location.href = u.href; }, 380);
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) document.body.classList.remove('is-leaving'); });
+
   /* ---- Dark / light toggle ---- */
   var btn = document.getElementById('themeToggle');
   function sync() { btn.setAttribute('aria-checked', root.getAttribute('data-theme') === 'dark'); }

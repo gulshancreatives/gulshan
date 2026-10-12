@@ -11,7 +11,9 @@
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
-body { background: var(--bg); color: var(--fg); font-family: var(--body); font-weight: 300; overflow-x: hidden; transition: background .3s, color .3s; }
+@keyframes pagein { from { opacity: 0; } to { opacity: 1; } }
+body { animation: pagein .6s ease; background: var(--bg); color: var(--fg); font-family: var(--body); font-weight: 300; overflow-x: hidden; transition: background .3s, color .3s, opacity .4s ease; }
+body.is-leaving { opacity: 0; pointer-events: none; }
 a { color: inherit; text-decoration: none; }
 :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
@@ -48,7 +50,7 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .card__conceptual { position: absolute; bottom: 2.6cqw; left: 2.6cqw; z-index: 1; }
 .tag { display: inline-block; border-radius: 99px; padding: .8cqw 2.3cqw; font: 400 1.7cqw/1.2 var(--body); white-space: nowrap; }
 .tag--name { background: #fff; color: #1c1c1c; }
-.tag--type, .tag--concept { background: rgba(140,140,140,.85); color: #fff; }
+.tag--type, .tag--concept { background: rgba(0,0,0,.3); color: #fff; }
 .card .tag { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s cubic-bezier(.22,.61,.36,1); }
 .card .tag:nth-child(2) { transition-delay: 0s; }
 .card:hover .tag, .card:focus-visible .tag, .card:focus-within .tag { opacity: 1; transform: none; }
@@ -152,4 +154,4 @@ a.card { display: block; color: inherit; }
   .footer__big { margin-top: 12vw; }
   .notfound { font-size: 16px; }
 }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
