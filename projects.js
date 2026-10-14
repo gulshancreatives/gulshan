@@ -9,36 +9,62 @@ window.ALL_PROJECTS = [
   "cover": "images/projects/navai/mv5lk577yx8.mp4",
   "blocks": [
    {
-    "type": "slide",
-    "media": "images/projects/navai/mv5lkuc3pp2.mp4",
-    "ar": 1.7778
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/navai/mv5lls8zutm.mp4",
-    "ar": 1.7778
-   },
-   {
     "type": "side",
     "left": {
-     "kind": null
+     "kind": "media",
+     "src": "images/projects/navai/mv8ik4qw84q.webp"
     },
     "right": {
      "kind": "text",
-     "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-     "size": 20,
-     "weight": 400
+     "text": "With the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n",
+     "size": 18,
+     "weight": 300
     }
    },
    {
-    "type": "text1",
-    "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
-    "size": 20,
-    "weight": 400
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1lm06o.webp",
+    "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": ""
+    "media": "images/projects/navai/mv8if1n809w.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1n81d1.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1ow5i1.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1qbu2t.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1t4sox.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1qcziv.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1qfxkw.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mv8if1qdjsb.mp4",
+    "ar": 1.7778
    }
   ]
  },
