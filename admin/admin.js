@@ -115,7 +115,7 @@ function addMedia(file) {
       var s = Math.min(1, 2880 / bm.width), c = document.createElement('canvas'); c.width = Math.round(bm.width * s); c.height = Math.round(bm.height * s);
       c.getContext('2d').drawImage(bm, 0, 0, c.width, c.height);
       return new Promise(function (r) { c.toBlob(r, 'image/webp', 0.88); });
-    }).then(function (b) { blob = b; ext = 'webp'; });
+    }).then(function (b) { if (b && b.type === 'image/webp') { blob = b; ext = 'webp'; } });
   }
   return p.then(function () {
     var path = 'images/projects/' + ed.proj.id + '/' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5) + '.' + ext;
@@ -213,14 +213,14 @@ function ctl(c) {
     '<select class="wt" title="Text weight">' + WTS.map(function (w) { return '<option value="' + w[0] + '"' + (w[0] == c.weight ? ' selected' : '') + '>' + w[1] + '</option>'; }).join('') + '</select></div>';
 }
 function tcell(c, which, extra, ind) {
-  return '<div class="tcell' + (ind ? ' ind' : '') + '" data-cell="' + which + '">' + (extra || '') + ctl(c) + '<textarea style="--s:' + c.size + ';--w:' + c.weight + '" placeholder="Type your text…">' + esc(c.text) + '</textarea></div>';
+  return '<div class="tcell' + (ind ? ' ind' : '') + '" data-cell="' + which + '">' + (extra || '') + ctl(c) + '<div class="rt" contenteditable="true" spellcheck="true" data-ph="Type your text… (select some words to change just their size or weight)" style="--s:' + c.size + ';--w:' + c.weight + '">' + (c.html || esc(c.text)) + '</div></div>';
 }
 function tools(replace) {
   return '<div class="tools"><button class="tb" data-act="pen" title="Edit">' + PEN + '</button><div class="menu" hidden>' + (replace ? '<button data-act="replace">' + replace + '</button>' : '') + '<button class="d" data-act="del">Delete</button></div><button class="tb drag" title="Drag to reorder">' + DOTS + '</button></div>';
 }
 function sideCell(c, which) {
   if (c.kind === 'text') return tcell(c, which, '<button class="x" data-act="cellreset" title="Clear">×</button>');
-  if (c.kind === 'media') return '<div data-cell="' + which + '" style="position:relative"><div class="blk__media sq">' + mediaEl(c.src) + '</div><button class="x" data-act="cellreset" title="Clear">×</button></div>';
+  if (c.kind === 'media') return '<div data-cell="' + which + '" style="position:relative"><div class="blk__media sq nat"' + (c.ar ? ' style="aspect-ratio:' + Number(c.ar) + '"' : '') + '>' + mediaEl(c.src) + '</div><button class="x" data-act="cellreset" title="Clear">×</button></div>';
   return '<div class="chooser" data-cell="' + which + '"><button class="btn" data-act="celltext">Type text</button><button class="btn" data-act="cellmedia">Select image / video</button></div>';
 }
 function blockHTML(b) {
@@ -249,7 +249,7 @@ function renderEditor() {
     '<div class="blocks" id="blocks">' + p.blocks.map(blockHTML).join('') + '</div>' +
     (p.blocks.length ? '' : '<div class="up drop" id="drop"><div><h3>Drop your files to upload</h3><p>or select your file here.</p><button class="btn" data-act="drop-pick">Select Files</button><p>Drop all your images &amp; videos here</p></div></div>') +
     '<div style="height:10vw"></div>';
-  $$('textarea').forEach(grow); window.scrollTo(0, y);
+  window.scrollTo(0, y);
   if ($('#blocks .wrap')) Sortable.create($('#blocks'), { handle: '.drag', animation: 150, onEnd: function () {
     ed.proj.blocks = $$('#blocks > .wrap').map(function (w) { return ed.proj.blocks.filter(function (b) { return b._k === w.dataset.k; })[0]; });
   } });
@@ -338,6 +338,59 @@ function delProject() {
 document.addEventListener('load', function (e) { var t = e.target; if (t.tagName === 'IMG' && t.parentNode.classList && t.parentNode.classList.contains('nat')) t.parentNode.style.aspectRatio = t.naturalWidth + ' / ' + t.naturalHeight; }, true);
 document.addEventListener('loadedmetadata', function (e) { var t = e.target; if (t.tagName === 'VIDEO' && t.parentNode.classList && t.parentNode.classList.contains('nat') && t.videoWidth) t.parentNode.style.aspectRatio = t.videoWidth + ' / ' + t.videoHeight; }, true);
 
+/* ---------- rich text (size / weight for selected words) ---------- */
+var selRange = null;
+function rtClean(node) {
+  var out = '';
+  node.childNodes.forEach(function (n) {
+    if (n.nodeType === 3) out += esc(n.nodeValue);
+    else if (n.nodeName === 'BR') out += '<br>';
+    else if (n.nodeName === 'SPAN' && (n.classList.contains('sz') || n.classList.contains('wt'))) {
+      var k = n.classList.contains('sz') ? 'sz' : 'wt', v = parseFloat(n.style.getPropertyValue(k === 'sz' ? '--s' : '--w'));
+      out += v > 0 ? '<span class="' + k + '" style="--' + (k === 'sz' ? 's' : 'w') + ':' + v + '">' + rtClean(n) + '</span>' : rtClean(n);
+    } else {
+      var inner = rtClean(n);
+      out += (n.nodeName === 'DIV' || n.nodeName === 'P') ? (n.previousSibling ? '<br>' : '') + inner : inner;
+    }
+  });
+  return out;
+}
+function plain(node) {
+  var out = '';
+  node.childNodes.forEach(function (n) {
+    if (n.nodeType === 3) out += n.nodeValue; else if (n.nodeName === 'BR') out += '\n';
+    else { var inner = plain(n); out += (n.nodeName === 'DIV' || n.nodeName === 'P') ? (n.previousSibling ? '\n' : '') + inner : inner; }
+  });
+  return out;
+}
+function syncRT(c, el) {
+  c.text = plain(el); var h = rtClean(el);
+  if (/<span /.test(h)) c.html = h; else delete c.html;
+}
+function applySpan(range, kind, val) {
+  var span = document.createElement('span'); span.className = kind; span.style.setProperty(kind === 'sz' ? '--s' : '--w', val);
+  span.appendChild(range.extractContents());
+  span.querySelectorAll('span.' + kind).forEach(function (inner) { while (inner.firstChild) inner.parentNode.insertBefore(inner.firstChild, inner); inner.remove(); });
+  range.insertNode(span);
+  var host = span.closest('.rt'); if (host) host.normalize();
+  var sel = window.getSelection(); sel.removeAllRanges(); var r = document.createRange(); r.selectNodeContents(span); sel.addRange(r);
+}
+document.addEventListener('selectionchange', function () {
+  var sel = window.getSelection(); if (!sel.rangeCount || sel.isCollapsed) return;
+  var n = sel.anchorNode, host = n && (n.nodeType === 1 ? n : n.parentNode); host = host && host.closest && host.closest('.rt');
+  if (host && host.contains(sel.focusNode)) selRange = { node: host, range: sel.getRangeAt(0).cloneRange() };
+});
+app.addEventListener('mousedown', function (e) { if (e.target.closest && !e.target.closest('.ctl')) selRange = null; });
+app.addEventListener('keydown', function (e) {
+  if (!(e.target.classList && e.target.classList.contains('rt'))) return;
+  selRange = null;
+  if (e.key === 'Enter') { e.preventDefault(); document.execCommand('insertLineBreak'); }
+});
+app.addEventListener('paste', function (e) {
+  if (!(e.target.classList && e.target.classList.contains('rt'))) return;
+  e.preventDefault(); document.execCommand('insertText', false, (e.clipboardData || window.clipboardData).getData('text/plain'));
+});
+
 /* ---------- events ---------- */
 function ctxBlock(el) { var w = el.closest('.wrap'); return w ? ed.proj.blocks.filter(function (b) { return b._k === w.dataset.k; })[0] : null; }
 function cellOf(b, el) { var c = el.closest('[data-cell]'); var w = c ? c.dataset.cell : ''; return { w: w, c: w ? b[w] : b }; }
@@ -368,7 +421,7 @@ app.addEventListener('click', function (e) {
   }
   else if (act === 'cellreset') { b[cellOf(b, a).w] = { kind: null }; renderEditor(); }
   else if (act === 'celltext') { b[cellOf(b, a).w] = { kind: 'text', text: '', size: 20, weight: 400 }; renderEditor(); }
-  else if (act === 'cellmedia') { var wch = cellOf(b, a).w; pick('image/*,video/*').then(withMedia(function (p) { b[wch] = { kind: 'media', src: p }; renderEditor(); })); }
+  else if (act === 'cellmedia') { var wch = cellOf(b, a).w; pick('image/*,video/*').then(withMedia(function (p) { b[wch] = { kind: 'media', src: p, ar: arOf(p) }; renderEditor(); })); }
   else if (act === 'draft') dialog('draft');
   else if (act === 'publish') dialog('publish');
   else if (act === 'delproj') delProject();
@@ -382,9 +435,15 @@ app.addEventListener('input', function (e) {
     mark(); return;
   }
   if (!ed) return; var b = ctxBlock(t); if (!b) return; var c = cellOf(b, t).c;
-  if (t.tagName === 'TEXTAREA') { c.text = t.value; grow(t); }
-  else if (t.classList.contains('sz')) { c.size = +t.value; var ta = t.closest('.tcell').querySelector('textarea'); ta.style.setProperty('--s', c.size); grow(ta); }
-  else if (t.classList.contains('wt')) { c.weight = +t.value; t.closest('.tcell').querySelector('textarea').style.setProperty('--w', c.weight); }
+  if (t.classList.contains('rt')) syncRT(c, t);
+  else if (t.classList.contains('sz') || t.classList.contains('wt')) {
+    var isSz = t.classList.contains('sz'), cell = t.closest('.tcell'), ed2 = cell.querySelector('.rt');
+    if (selRange && cell.contains(selRange.node) && !selRange.range.collapsed) {
+      applySpan(selRange.range, isSz ? 'sz' : 'wt', +t.value); selRange = null; syncRT(c, ed2);
+      t.value = isSz ? c.size : c.weight;   /* the box keeps showing the whole-text value */
+    } else if (isSz) { c.size = +t.value; ed2.style.setProperty('--s', c.size); }
+    else { c.weight = +t.value; ed2.style.setProperty('--w', c.weight); }
+  }
 });
 
 /* ---------- routing ---------- */
