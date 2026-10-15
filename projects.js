@@ -17,9 +17,9 @@ window.ALL_PROJECTS = [
     "right": {
      "kind": "text",
      "text": "\nDriven by intelligence \n\n\n\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n",
-     "size": 18,
+     "size": 16,
      "weight": 300,
-     "html": "<span class=\"sz\" style=\"--s:32\"><span class=\"sz\" style=\"--s:24\"><span class=\"sz\" style=\"--s:36\"><span class=\"wt\" style=\"--w:400\"><span class=\"wt\" style=\"--w:500\"><span class=\"wt\" style=\"--w:200\"><span class=\"wt\" style=\"--w:400\">\n<span class=\"sz\" style=\"--s:36\"><span class=\"sz\" style=\"--s:40\">Driven by intelligence</span></span> \n</span></span></span></span></span></span></span>\n\n\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n"
+     "html": "\n<span class=\"sz\" style=\"--s:20\"><span class=\"sz\" style=\"--s:40\">Driven by intelligence</span></span> \n\n\n<span class=\"sz\" style=\"--s:18\"><span class=\"sz\" style=\"--s:14\"><span class=\"sz\" style=\"--s:18\">\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai</span></span></span>\n"
     }
    },
    {
