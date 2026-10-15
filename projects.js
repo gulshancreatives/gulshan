@@ -70,7 +70,7 @@ window.ALL_PROJECTS = [
  },
  {
   "id": "feel-good-farms",
-  "title": "Feel good farms",
+  "title": "Feel good farm",
   "type": "Branding",
   "conceptual": false,
   "pinned": true,
