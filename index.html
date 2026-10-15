@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap">
 <link rel="stylesheet" href="style.css">
 <script>
-  /* Apply saved/system theme before paint so there is no flash */
+  /* Home & Work open in light mode, project pages open in dark mode. A visitor's own toggle choice is remembered separately for each. */
   (function () {
-    var t = null;
-    try { t = localStorage.getItem('theme'); } catch (e) {}
-    if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    var proj = /project\.html/.test(location.pathname), t = null;
+    try { t = localStorage.getItem(proj ? 'theme-project' : 'theme-site'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') t = proj ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', t);
   })();
 </script>

@@ -66,10 +66,11 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 a.card { display: block; color: inherit; }
 
 /* ---------- Project page ---------- */
-:root { --m: 11.111vw; --gap: 1.944vw; --t-above: 3.125vw; --t-below: 6.944vw; }
+:root { --m: 11.111vw; --gap: 1.389vw; --t-above: 3.125vw; --t-below: 6.944vw; }
 .nav--over { color: #fff; }
 .nav--over.is-solid { color: var(--fg); }
-.pcover, .blk__media { aspect-ratio: 16 / 9; background: #D9D9D9; overflow: hidden; width: 100%; }
+.pcover, .blk__media { aspect-ratio: 16 / 9; overflow: hidden; width: 100%; }
+.pcover:empty, .blk__media:empty { background: #D9D9D9; }
 .pcover img, .pcover video, .blk__media img, .blk__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .blocks { padding: var(--gap) var(--m) 16vw; }
 .blk + .blk { margin-top: var(--gap); }
@@ -79,11 +80,13 @@ a.card { display: block; color: inherit; }
 .blk--text2 { align-items: start; }
 .blk--side { align-items: start; }
 .blk--slide .blk__media { overflow: hidden; }
-.blk--slide .blk__media img, .blk--slide .blk__media video { height: auto; object-fit: contain; }
+.blk--slide .blk__media img, .blk--slide .blk__media video, .blk--side .blk__media img, .blk--side .blk__media video { height: auto; object-fit: contain; }
 .blk--side .blk__media { aspect-ratio: 1 / 1; }
 .blk--embed iframe { width: 100%; height: 100%; border: 0; display: block; }
 .blk--side.is-right .blk__media { order: 2; }
 .t-h, .t-b { font-size: calc(var(--s) / 14.4 * 1vw); font-weight: var(--w); white-space: pre-line; }
+.sz { font-size: calc(var(--s) / 14.4 * 1vw); }
+.wt { font-weight: var(--w); }
 .t-h { line-height: 1.2; }
 .t-b { line-height: 1.35; }
 .side__text .t-h + .t-b { margin-top: 2.2vw; }
@@ -110,11 +113,12 @@ a.card { display: block; color: inherit; }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
-  :root { --m: 4.2vw; --gap: 4vw; --t-above: 6vw; --t-below: 12vw; --pad: 4.2vw; }
+  :root { --m: 4.2vw; --gap: 3vw; --t-above: 6vw; --t-below: 12vw; --pad: 4.2vw; }
   .blk--text2, .blk--side { grid-template-columns: 1fr; }
   .blk--text2 { gap: 3vw; }
   .blk--side.is-right .blk__media { order: 0; }
   .t-h, .t-b { font-size: clamp(9px, calc(var(--s) * .45px), 16px); }
+  .sz { font-size: clamp(9px, calc(var(--s) * .45px), 16px); }
   .side__text { padding-top: 2vw; }
   .side__text .t-h + .t-b { margin-top: 3vw; }
   .blocks { padding-bottom: 24vw; }
