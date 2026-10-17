@@ -19,7 +19,8 @@ window.ALL_PROJECTS = [
      "kind": "text",
      "text": "Driven by intelligence \n\n\n\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n\n",
      "size": 20,
-     "weight": 400
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:40\">Driven by intelligence</span> \n\n\n\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n\n"
     }
    },
    {
