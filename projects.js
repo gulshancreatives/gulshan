@@ -12,59 +12,94 @@ window.ALL_PROJECTS = [
     "type": "side",
     "left": {
      "kind": "media",
-     "src": "images/projects/navai/mv8ik4qw84q.webp"
+     "src": "images/projects/navai/mvczf6arywg.webp",
+     "ar": 1
     },
     "right": {
      "kind": "text",
-     "text": "\nDriven by intelligence \n\n\n\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n",
-     "size": 16,
-     "weight": 300,
-     "html": "\n<span class=\"sz\" style=\"--s:20\"><span class=\"sz\" style=\"--s:40\">Driven by intelligence</span></span> \n\n\n<span class=\"sz\" style=\"--s:18\"><span class=\"sz\" style=\"--s:14\"><span class=\"sz\" style=\"--s:18\">\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai</span></span></span>\n"
+     "text": "Driven by intelligence \n\n\n\nWith the rise of AI-driven decision making, Navsoft, a 25 year old software solutions company introduced NavAI, an AI powered business intelligence platform designed to unlock the full potential of enterprise data. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\n\nwww.navsoft.ai\n\n",
+     "size": 20,
+     "weight": 400
     }
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1lm06o.webp",
+    "media": "images/projects/navai/mvcz8pykcnb.webp",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1n809w.webp",
+    "media": "images/projects/navai/mvcz8pkp8ze.mp4",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1n81d1.mp4",
+    "media": "images/projects/navai/mvcz8pn7jdz.webp",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1ow5i1.webp",
+    "media": "images/projects/navai/mvcz8pykjrb.mp4",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1qbu2t.webp",
+    "media": "images/projects/navai/mvcz8q0c2i3.webp",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1t4sox.webp",
+    "media": "images/projects/navai/mvcz8q21d2n.webp",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1qcziv.mp4",
+    "media": "images/projects/navai/mvcz8pquo6n.webp",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1qfxkw.mp4",
+    "media": "images/projects/navai/mvcz8q55ee5.webp",
     "ar": 1.7778
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mv8if1qdjsb.mp4",
+    "media": "images/projects/navai/mvcz8pswcxm.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8q2163v.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8pt0ap8.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8pswv17.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8psyg28.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8q23lba.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8puusca.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/navai/mvcz8pwpns4.webp",
     "ar": 1.7778
    }
   ]
