@@ -92,6 +92,9 @@
     });
   }
 
+  var moreCount = document.getElementById('moreCount');
+  if (moreCount) moreCount.textContent = '(' + (all.length < 10 ? '0' : '') + all.length + ')';
+
   /* ---- Project page ---- */
   if (page === 'project') {
     var id = new URLSearchParams(location.search).get('id');

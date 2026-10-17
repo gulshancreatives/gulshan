@@ -93,6 +93,22 @@ a.card { display: block; color: inherit; }
 .notfound { padding: 12vw var(--pad); font-size: 2vw; }
 .notfound a { color: var(--red); }
 
+/* ---------- "View all projects" bar (home page) ---------- */
+body[data-page="home"] .work { padding-bottom: 2vw; }
+.more-wrap { padding: 0 var(--pad) 8vw; }
+.more { position: relative; display: flex; align-items: center; justify-content: space-between; overflow: hidden; isolation: isolate; padding: 0 3vw; height: 9vw; border-top: 1px solid var(--fg); border-bottom: 1px solid var(--fg); color: var(--fg); transition: color .5s ease, border-color .5s ease; }
+.more::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--red); transform: scaleY(0); transform-origin: bottom; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+.more__label { font: 400 3.6vw/1 var(--body); letter-spacing: -.01em; }
+.more__meta { display: flex; align-items: center; gap: 2vw; }
+.more__count { font: 400 1.2vw/1 var(--body); opacity: .6; }
+.more__arrow { width: 3.6vw; height: 3.6vw; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+@media (hover: hover) {
+  .more:hover, .more:focus-visible { color: #fff; border-color: var(--red); }
+  .more:hover::before, .more:focus-visible::before { transform: scaleY(1); }
+  .more:hover .more__arrow, .more:focus-visible .more__arrow { transform: translateX(1vw); }
+}
+@media (hover: none) { .more__arrow { color: var(--red); } }
+
 /* ---------- Footer ---------- */
 .footer { padding: 0 var(--pad) 0; }
 .footer__top { border-top: 1px solid #8a8a8a66; padding-top: 2.2vw; display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; }
@@ -146,6 +162,12 @@ a.card { display: block; color: inherit; }
   .work { padding: 15vw var(--pad) 14vw; gap: 4vw; }
   .work--page { padding-top: 4vw; padding-bottom: 16vw; }
   .tag { font-size: 9px; padding: 1.2vw 3.2vw; }
+  body[data-page="home"] .work { padding-bottom: 4vw; }
+  .more-wrap { padding-bottom: 14vw; }
+  .more { height: 17vw; padding: 0 4vw; }
+  .more__label { font-size: 16px; }
+  .more__count { font-size: 9px; }
+  .more__arrow { width: 22px; height: 22px; }
   .footer__top { gap: 4vw; padding-top: 6vw; }
   .footer__name { font-size: 8.5vw; }
   .footer__skills { font-size: 9px; margin-top: 1.5vw; }
