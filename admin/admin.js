@@ -205,12 +205,12 @@ function saveDash() {
 }
 
 /* ---------- editor ---------- */
-var SIZES = [12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80];
+var SIZES = [10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96, 120];
 var WTS = [[100, 'Thin'], [200, 'Extra light'], [300, 'Light'], [400, 'Regular'], [500, 'Medium'], [600, 'Semibold'], [700, 'Bold'], [800, 'Extra bold'], [900, 'Black']];
 function ctl(c) {
   var sz = SIZES.indexOf(c.size) < 0 ? SIZES.concat([c.size]).sort(function (a, b) { return a - b; }) : SIZES;
-  return '<div class="ctl"><select class="sz" title="Text size">' + sz.map(function (s) { return '<option' + (s == c.size ? ' selected' : '') + '>' + s + '</option>'; }).join('') + '</select>' +
-    '<select class="wt" title="Text weight">' + WTS.map(function (w) { return '<option value="' + w[0] + '"' + (w[0] == c.weight ? ' selected' : '') + '>' + w[1] + '</option>'; }).join('') + '</select></div>';
+  return '<div class="ctl"><span class="hint">Select words to change only them</span><select class="sz" title="Text size">' + sz.map(function (s) { return '<option' + (s == c.size ? ' selected' : '') + '>' + s + '</option>'; }).join('') + '</select>' +
+    '<select class="wt" title="Text weight">' + WTS.map(function (w) { return '<option value="' + w[0] + '"' + (w[0] == c.weight ? ' selected' : '') + '>' + w[1] + '</option>'; }).join('') + '</select><button type="button" class="clr" data-act="clearfmt" title="Remove the different sizes/weights you gave to single words">Reset words</button></div>';
 }
 function tcell(c, which, extra, ind) {
   return '<div class="tcell' + (ind ? ' ind' : '') + '" data-cell="' + which + '">' + (extra || '') + ctl(c) + '<div class="rt" contenteditable="true" spellcheck="true" data-ph="Type your text… (select some words to change just their size or weight)" style="--s:' + c.size + ';--w:' + c.weight + '">' + (c.html || esc(c.text)) + '</div></div>';
@@ -364,26 +364,60 @@ function plain(node) {
   return out;
 }
 function syncRT(c, el) {
-  c.text = plain(el); var h = rtClean(el);
+  c.text = plain(el).replace(/\n+$/, ''); var h = rtClean(el).replace(/(<br>)+$/, '');
   if (/<span /.test(h)) c.html = h; else delete c.html;
 }
-function applySpan(range, kind, val) {
+function setSel(sel, val) {
+  val = String(val);
+  if (!Array.prototype.some.call(sel.options, function (o) { return o.value === val; })) {
+    var o = document.createElement('option'); o.value = val; o.textContent = val; sel.appendChild(o);
+  }
+  sel.value = val;
+}
+function baseOf(host) { return { s: +host.style.getPropertyValue('--s') || 20, w: +host.style.getPropertyValue('--w') || 400 }; }
+/* what size / weight is the text at this spot? (closest word-style around it, else the whole-text value) */
+function effective(node, host) {
+  var b = baseOf(host), s = null, w = null;
+  if (node && node.nodeType === 3) node = node.parentNode;
+  while (node && node !== host) {
+    if (node.nodeType === 1 && node.tagName === 'SPAN') {
+      if (s === null && node.classList.contains('sz')) s = parseFloat(node.style.getPropertyValue('--s')) || null;
+      if (w === null && node.classList.contains('wt')) w = parseFloat(node.style.getPropertyValue('--w')) || null;
+    }
+    node = node.parentNode;
+  }
+  return { s: s || b.s, w: w || b.w };
+}
+function showValues(host, node) {
+  var cell = host.closest('.tcell'), v = effective(node, host);
+  setSel(cell.querySelector('select.sz'), v.s); setSel(cell.querySelector('select.wt'), v.w);
+}
+function unwrap(el) { while (el.firstChild) el.parentNode.insertBefore(el.firstChild, el); el.remove(); }
+function applySpan(range, kind, val, host) {
+  var frag = range.extractContents();
+  frag.querySelectorAll('span.' + kind).forEach(unwrap);
   var span = document.createElement('span'); span.className = kind; span.style.setProperty(kind === 'sz' ? '--s' : '--w', val);
-  span.appendChild(range.extractContents());
-  span.querySelectorAll('span.' + kind).forEach(function (inner) { while (inner.firstChild) inner.parentNode.insertBefore(inner.firstChild, inner); inner.remove(); });
-  range.insertNode(span);
-  var host = span.closest('.rt'); if (host) host.normalize();
-  var sel = window.getSelection(); sel.removeAllRanges(); var r = document.createRange(); r.selectNodeContents(span); sel.addRange(r);
+  span.appendChild(frag); range.insertNode(span);
+  host.querySelectorAll('span:empty').forEach(function (x) { x.remove(); });
+  var next = document.createRange(); next.selectNodeContents(span);
+  var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(next);
+  return next;
+}
+function liveRange(host) {
+  var sel = window.getSelection();
+  if (sel.rangeCount && !sel.isCollapsed && host.contains(sel.anchorNode) && host.contains(sel.focusNode)) return sel.getRangeAt(0);
+  if (selRange && selRange.node === host && !selRange.range.collapsed && host.contains(selRange.range.commonAncestorContainer)) return selRange.range;
+  return null;
 }
 document.addEventListener('selectionchange', function () {
-  var sel = window.getSelection(); if (!sel.rangeCount || sel.isCollapsed) return;
+  var sel = window.getSelection(); if (!sel.rangeCount) return;
   var n = sel.anchorNode, host = n && (n.nodeType === 1 ? n : n.parentNode); host = host && host.closest && host.closest('.rt');
-  if (host && host.contains(sel.focusNode)) selRange = { node: host, range: sel.getRangeAt(0).cloneRange() };
+  if (!host) return;
+  if (sel.isCollapsed) { selRange = null; showValues(host, sel.anchorNode); return; }
+  if (host.contains(sel.focusNode)) { selRange = { node: host, range: sel.getRangeAt(0).cloneRange() }; showValues(host, sel.getRangeAt(0).startContainer.nodeType === 1 ? (sel.getRangeAt(0).startContainer.childNodes[sel.getRangeAt(0).startOffset] || sel.getRangeAt(0).startContainer) : sel.getRangeAt(0).startContainer); }
 });
-app.addEventListener('mousedown', function (e) { if (e.target.closest && !e.target.closest('.ctl')) selRange = null; });
 app.addEventListener('keydown', function (e) {
   if (!(e.target.classList && e.target.classList.contains('rt'))) return;
-  selRange = null;
   if (e.key === 'Enter') { e.preventDefault(); document.execCommand('insertLineBreak'); }
 });
 app.addEventListener('paste', function (e) {
@@ -401,6 +435,7 @@ app.addEventListener('click', function (e) {
   if (act === 'logout') { sessionStorage.removeItem('adminSession'); cfg = null; viewAuth(); }
   else if (act === 'reset') { if (confirm('This removes the saved login from this device. You will need your GitHub token again.')) { localStorage.removeItem('adminVault'); viewAuth(); } }
   else if (act === 'delcard') delCard(a.closest('.pc').dataset.id);
+  else if (act === 'clearfmt') { var cell0 = a.closest('.tcell'), host0 = cell0.querySelector('.rt'), cc = cellOf(b, a).c; host0.querySelectorAll('span').forEach(unwrap); host0.normalize(); syncRT(cc, host0); setSel(cell0.querySelector('select.sz'), cc.size); setSel(cell0.querySelector('select.wt'), cc.weight); }
   else if (act === 'new') location.hash = '#/new';
   else if (act === 'edit') location.hash = '#/edit/' + a.closest('.pc').dataset.id;
   else if (act === 'discard') { busy('Reloading…'); load().then(dashboard).then(function () { busy(); }); }
@@ -437,12 +472,11 @@ app.addEventListener('input', function (e) {
   if (!ed) return; var b = ctxBlock(t); if (!b) return; var c = cellOf(b, t).c;
   if (t.classList.contains('rt')) syncRT(c, t);
   else if (t.classList.contains('sz') || t.classList.contains('wt')) {
-    var isSz = t.classList.contains('sz'), cell = t.closest('.tcell'), ed2 = cell.querySelector('.rt');
-    if (selRange && cell.contains(selRange.node) && !selRange.range.collapsed) {
-      applySpan(selRange.range, isSz ? 'sz' : 'wt', +t.value); selRange = null; syncRT(c, ed2);
-      t.value = isSz ? c.size : c.weight;   /* the box keeps showing the whole-text value */
-    } else if (isSz) { c.size = +t.value; ed2.style.setProperty('--s', c.size); }
-    else { c.weight = +t.value; ed2.style.setProperty('--w', c.weight); }
+    var isSz = t.classList.contains('sz'), cell = t.closest('.tcell'), host = cell.querySelector('.rt'), val = +t.value, rg = liveRange(host);
+    if (rg) {            /* some words are selected: style only those */
+      selRange = { node: host, range: applySpan(rg, isSz ? 'sz' : 'wt', val, host).cloneRange() }; syncRT(c, host);
+    } else if (isSz) { c.size = val; host.style.setProperty('--s', val); }
+    else { c.weight = val; host.style.setProperty('--w', val); }
   }
 });
 
