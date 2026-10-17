@@ -96,18 +96,16 @@ a.card { display: block; color: inherit; }
 /* ---------- "View all projects" bar (home page) ---------- */
 body[data-page="home"] .work { padding-bottom: 2vw; }
 .more-wrap { padding: 0 var(--pad) 8vw; }
-.more { position: relative; display: flex; align-items: center; justify-content: space-between; overflow: hidden; isolation: isolate; padding: 0 3vw; height: 9vw; border-top: 1px solid var(--fg); border-bottom: 1px solid var(--fg); color: var(--fg); transition: color .5s ease, border-color .5s ease; }
-.more::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--red); transform: scaleY(0); transform-origin: bottom; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
+.more { display: flex; align-items: center; justify-content: space-between; padding: 0 3vw; height: 9vw; color: var(--fg); transition: color .45s ease; }
 .more__label { font: 400 3.6vw/1 var(--body); letter-spacing: -.01em; }
 .more__meta { display: flex; align-items: center; gap: 2vw; }
-.more__count { font: 400 1.2vw/1 var(--body); opacity: .6; }
+.more__count { font: 400 1.2vw/1 var(--body); opacity: .6; transition: opacity .45s ease; }
 .more__arrow { width: 3.6vw; height: 3.6vw; transition: transform .6s cubic-bezier(.22,.61,.36,1); }
 @media (hover: hover) {
-  .more:hover, .more:focus-visible { color: #fff; border-color: var(--red); }
-  .more:hover::before, .more:focus-visible::before { transform: scaleY(1); }
+  .more:hover, .more:focus-visible { color: var(--red); }
   .more:hover .more__arrow, .more:focus-visible .more__arrow { transform: translateX(1vw); }
 }
-@media (hover: none) { .more__arrow { color: var(--red); } }
+.more:active { color: var(--red); }
 
 /* ---------- Footer ---------- */
 .footer { padding: 0 var(--pad) 0; }
