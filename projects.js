@@ -246,10 +246,10 @@ window.ALL_PROJECTS = [
      "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Brand in a Sticker</span></span>"
     },
     "right": {
-     "text": "Custom packaging is expensive. For a farm this size, it would eat into every order. \n\n\nInstead, I designed a set of stickers, one for each product: beans, cabbage, cauliflower and more. Each sticker carries the brand and tells the customer what’s inside. The farm buys plain packaging from any supplier, sticks on the right label, and it’s ready. A blank bag becomes a Feel Good Farm bag in two seconds.\n\n\nLow cost to print. Easy to use. And the brand still shows up on every doorstep.",
+     "text": "Custom packaging is expensive. For a farm this size, it would eat into every order. \n\nInstead, I designed a set of stickers, one for each product: beans, cabbage, cauliflower and more. Each sticker carries the brand and tells the customer what’s inside. The farm buys plain packaging from any supplier, sticks on the right label, and it’s ready. A blank bag becomes a Feel Good Farm bag in two seconds.\n\nLow cost to print. Easy to use. And the brand still shows up on every doorstep.",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">Custom packaging is expensive. For a farm this size, it would eat into every order. \n\n<br>Instead, I designed a set of stickers, one for each product: beans, cabbage, cauliflower and more. Each sticker carries the brand and tells the customer what’s inside. The farm buys plain packaging from any supplier, sticks on the right label, and it’s ready. A blank bag becomes a Feel Good Farm bag in two seconds.<br><br><br>Low cost to print. Easy to use. And the brand still shows up on every doorstep.</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">Custom packaging is expensive. For a farm this size, it would eat into every order. \n\nInstead, I designed a set of stickers, one for each product: beans, cabbage, cauliflower and more. Each sticker carries the brand and tells the customer what’s inside. The farm buys plain packaging from any supplier, sticks on the right label, and it’s ready. A blank bag becomes a Feel Good Farm bag in two seconds.<br>\nLow cost to print. Easy to use. And the brand still shows up on every doorstep.</span></span>"
     }
    },
    {
