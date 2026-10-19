@@ -266,10 +266,10 @@ window.ALL_PROJECTS = [
      "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">One Frame, Every Size</span></span>"
     },
     "right": {
-     "text": "The frame from the logo doesn’t stay in the logo. It stretches to fit any shape: a square post, a tall story, a wide banner, a brochure page.\n\n\nPut it over a photo, and the sprout sits on its edge, growing out of the line. An apple crate, a field at dawn, a farmer in the sun. Each photo becomes a Feel Good Farm image without any extra design work.\n\n\nThat’s the point. The team doesn’t need a designer for every Instagram post. They need one frame, a good photo, and they’re done.",
+     "text": "The frame from the logo doesn’t stay in the logo. It stretches to fit any shape: a square post, a tall story, a wide banner, a brochure page.\n\nPut it over a photo, and the sprout sits on its edge, growing out of the line. An apple crate, a field at dawn, a farmer in the sun. Each photo becomes a Feel Good Farm image without any extra design work.\n\nThat’s the point. The team doesn’t need a designer for every Instagram post. They need one frame, a good photo, and they’re done.",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The frame from the logo doesn’t stay in the logo. It stretches to fit any shape: a square post, a tall story, a wide banner, a brochure page.<br><br><br>Put it over a photo, and the sprout sits on its edge, growing out of the line. An apple crate, a field at dawn, a farmer in the sun. Each photo becomes a Feel Good Farm image without any extra design work.<br><br><br>That’s the point. The team doesn’t need a designer for every Instagram post. They need one frame, a good photo, and they’re done.</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The frame from the logo doesn’t stay in the logo. It stretches to fit any shape: a square post, a tall story, a wide banner, a brochure page.<br>\nPut it over a photo, and the sprout sits on its edge, growing out of the line. An apple crate, a field at dawn, a farmer in the sun. Each photo becomes a Feel Good Farm image without any extra design work.<br>\nThat’s the point. The team doesn’t need a designer for every Instagram post. They need one frame, a good photo, and they’re done.</span></span>"
     }
    },
    {
