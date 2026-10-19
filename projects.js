@@ -175,11 +175,6 @@ window.ALL_PROJECTS = [
    },
    {
     "type": "slide",
-    "media": "images/projects/feel-good-farms/mv5jz8jv46m.webp",
-    "ar": 1.3103
-   },
-   {
-    "type": "slide",
     "media": "images/projects/feel-good-farms/mv5jz8s9f83.webp",
     "ar": 1.6045
    },
