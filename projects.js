@@ -17,10 +17,10 @@ window.ALL_PROJECTS = [
     },
     "right": {
      "kind": "text",
-     "text": "\nDriven by intelligence \n\nNavAI isn’t one product. It’s the ground many products stand on.\nNavsoft has built software for businesses for over 25 years. NavAI is where that experience meets AI. The team shapes it into a custom AI solution for every client who asks for one. Some of those products exist today. Many more are on the way. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\nwww.navsoft.ai",
+     "text": "\nDriven by intelligence \n\nNavAI isn’t one product. It’s the ground many products stand on. Navsoft has built software for businesses for over 25 years. NavAI is where that experience meets AI. The team shapes it into a custom AI solution for every client who asks for one. Some of those products exist today. Many more are on the way. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\nwww.navsoft.ai",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:40\">\nDriven by intelligence</span> \n<span class=\"wt\" style=\"--w:300\">\nNavAI isn’t one product. It’s the ground many products stand on.\nNavsoft has built software for businesses for over 25 years. NavAI is where that experience meets AI. The team shapes it into a custom AI solution for every client who asks for one. Some of those products exist today. Many more are on the way. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\nwww.navsoft.ai</span>\n\n"
+     "html": "<span class=\"sz\" style=\"--s:40\">\nDriven by intelligence</span> \n<span class=\"wt\" style=\"--w:300\">\nNavAI isn’t one product. It’s the ground many products stand on. Navsoft has built software for businesses for over 25 years. NavAI is where that experience meets AI. The team shapes it into a custom AI solution for every client who asks for one. Some of those products exist today. Many more are on the way. \n\nThe objective of this project was to design a brand identity that reflects NavAI’s role as an intelligent decision making platform for modern enterprises. \n\nwww.navsoft.ai\n</span>\n\n"
     }
    },
    {
@@ -44,10 +44,10 @@ window.ALL_PROJECTS = [
     },
     "right": {
      "kind": "text",
-     "text": "Every symbol starts somewhere. This one starts with the letter N. \n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N.",
+     "text": "Every symbol starts somewhere. This one starts with the letter N. \n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N. ",
      "size": 20,
      "weight": 300,
-     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"sz\" style=\"--s:20\"><span class=\"sz\" style=\"--s:16\">Every symbol starts somewhere. This one starts with the letter N. \n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N.</span></span></span>"
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"sz\" style=\"--s:20\"><span class=\"sz\" style=\"--s:16\">Every symbol starts somewhere. This one starts with the letter N. \n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N. \n\n\n\n</span></span></span>"
     }
    },
    {
@@ -101,11 +101,19 @@ window.ALL_PROJECTS = [
     "ar": 1.7778
    },
    {
-    "type": "text1",
-    "text": "The video shows the NavAI website from top to bottom. \nSee it live, Visit www.navsoft.ai",
-    "size": 20,
-    "weight": 400,
-    "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The video shows the NavAI website from top to bottom. \nSee it live, Visit www.navsoft.ai</span></span>"
+    "type": "text2",
+    "left": {
+     "text": "The NavAI website",
+     "size": 40,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\"><span class=\"wt\" style=\"--w:400\">The NavAI website</span></span></span>"
+    },
+    "right": {
+     "text": "The video shows the NavAI website from top to bottom.\nSee it live, Visit www.navsoft.ai",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The video shows the NavAI website from top to bottom.<br>See it live, Visit www.navsoft.ai</span></span>"
+    }
    },
    {
     "type": "slide",
