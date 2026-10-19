@@ -34,20 +34,18 @@ window.ALL_PROJECTS = [
     "ar": 1.7778
    },
    {
-    "type": "side",
+    "type": "text2",
     "left": {
-     "kind": "text",
      "text": "From a Letter to a Mind",
-     "size": 20,
+     "size": 40,
      "weight": 400,
-     "html": "<span class=\"wt\" style=\"--w:500\"><span class=\"sz\" style=\"--s:32\"><span class=\"sz\" style=\"--s:30\"><span class=\"sz\" style=\"--s:32\"><span class=\"sz\" style=\"--s:28\"><span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:400\"><span class=\"wt\" style=\"--w:500\">From a Letter to a Mind</span></span></span></span></span></span></span></span>"
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">From a Letter to a Mind</span></span>"
     },
     "right": {
-     "kind": "text",
-     "text": "Every symbol starts somewhere. This one starts with the letter N. \n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N. ",
+     "text": "Every symbol starts somewhere. This one starts with the letter N. \n\n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N. ",
      "size": 20,
-     "weight": 300,
-     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"sz\" style=\"--s:20\"><span class=\"sz\" style=\"--s:16\">Every symbol starts somewhere. This one starts with the letter N. \n\nThe two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. \n\nThe final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N. \n\n\n\n</span></span></span>"
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">Every symbol starts somewhere. This one starts with the letter N. <br><br><br>The two halves mean something. One side is logic: data, structure, the things software does well. The other is understanding: knowing people and how their business works. Good AI needs both. The diagonal stroke from the letter N sits at the centre and holds them together. <br><br><br>The final mark is simple. At first glance, you see a brain. Look again, and you will see the reminiscent of the letter N. </span></span>"
     }
    },
    {
