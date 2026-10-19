@@ -159,6 +159,21 @@ window.ALL_PROJECTS = [
   "cover": "images/projects/feel-good-farms/mv5jyzcyp7l.webp",
   "blocks": [
    {
+    "type": "text2",
+    "left": {
+     "text": "Fresh From the Ground Up",
+     "size": 40,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Fresh From the Ground Up</span></span>"
+    },
+    "right": {
+     "text": "Feel Good Farm grows organic produce and delivers it across Mumbai. It’s a small team with loyal customers, and most orders come in on WhatsApp. No big budget. No warehouse full of custom packaging. Just good vegetables, picked fresh.\n\n\nThe brand had to feel the same way: honest, fresh, and close to the soil. It also had to be cheap to run.",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"wt\" style=\"--w:300\">Feel Good Farm grows organic produce and delivers it across Mumbai. It’s a small team with loyal customers, and most orders come in on WhatsApp. No big budget. No warehouse full of custom packaging. Just good vegetables, picked fresh.<br><br><br>The brand had to feel the same way: honest, fresh, and close to the soil. It also had to be cheap to run.</span>"
+    }
+   },
+   {
     "type": "slide",
     "media": "images/projects/feel-good-farms/mv5jz8jv46m.webp",
     "ar": 1.3103
@@ -172,6 +187,20 @@ window.ALL_PROJECTS = [
     "type": "slide",
     "media": "images/projects/feel-good-farms/mv5jz8xp6ek.webp",
     "ar": 1.9862
+   },
+   {
+    "type": "text2",
+    "left": {
+     "text": "A simple frame",
+     "size": 40,
+     "weight": 400
+    },
+    "right": {
+     "text": "The logo has a simple frame. Then, on the right side, the line of the frame rises and turns into a sprout, with small leaves opening on each side. The frame doesn’t just hold the food. It grows it.",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The logo has a simple frame. Then, on the right side, the line of the frame rises and turns into a sprout, with small leaves opening on each side. The frame doesn’t just hold the food. It grows it.</span></span>"
+    }
    },
    {
     "type": "slide",
@@ -209,9 +238,39 @@ window.ALL_PROJECTS = [
     "ar": 1.7778
    },
    {
+    "type": "text2",
+    "left": {
+     "text": "Brand in a Sticker",
+     "size": 40,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Brand in a Sticker</span></span>"
+    },
+    "right": {
+     "text": "Custom packaging is expensive. For a farm this size, it would eat into every order. \n\n\nInstead, I designed a set of stickers, one for each product: beans, cabbage, cauliflower and more. Each sticker carries the brand and tells the customer what’s inside. The farm buys plain packaging from any supplier, sticks on the right label, and it’s ready. A blank bag becomes a Feel Good Farm bag in two seconds.\n\n\nLow cost to print. Easy to use. And the brand still shows up on every doorstep.",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">Custom packaging is expensive. For a farm this size, it would eat into every order. \n\n<br>Instead, I designed a set of stickers, one for each product: beans, cabbage, cauliflower and more. Each sticker carries the brand and tells the customer what’s inside. The farm buys plain packaging from any supplier, sticks on the right label, and it’s ready. A blank bag becomes a Feel Good Farm bag in two seconds.<br><br><br>Low cost to print. Easy to use. And the brand still shows up on every doorstep.</span></span>"
+    }
+   },
+   {
     "type": "slide",
     "media": "images/projects/feel-good-farms/mv5jzbk4u14.webp",
     "ar": 1.2565
+   },
+   {
+    "type": "text2",
+    "left": {
+     "text": "One Frame, Every Size",
+     "size": 40,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">One Frame, Every Size</span></span>"
+    },
+    "right": {
+     "text": "The frame from the logo doesn’t stay in the logo. It stretches to fit any shape: a square post, a tall story, a wide banner, a brochure page.\n\n\nPut it over a photo, and the sprout sits on its edge, growing out of the line. An apple crate, a field at dawn, a farmer in the sun. Each photo becomes a Feel Good Farm image without any extra design work.\n\n\nThat’s the point. The team doesn’t need a designer for every Instagram post. They need one frame, a good photo, and they’re done.",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The frame from the logo doesn’t stay in the logo. It stretches to fit any shape: a square post, a tall story, a wide banner, a brochure page.<br><br><br>Put it over a photo, and the sprout sits on its edge, growing out of the line. An apple crate, a field at dawn, a farmer in the sun. Each photo becomes a Feel Good Farm image without any extra design work.<br><br><br>That’s the point. The team doesn’t need a designer for every Instagram post. They need one frame, a good photo, and they’re done.</span></span>"
+    }
    },
    {
     "type": "slide",
