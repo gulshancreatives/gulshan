@@ -161,16 +161,16 @@ window.ALL_PROJECTS = [
    {
     "type": "text2",
     "left": {
-     "text": "Fresh From the Ground Up",
+     "text": "\nFresh From the \nGround Up",
      "size": 40,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Fresh From the Ground Up</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\"><span class=\"sz\" style=\"--s:40\">\nFresh From the \nGround Up</span></span></span>"
     },
     "right": {
-     "text": "Feel Good Farm grows organic produce and delivers it across Mumbai. It’s a small team with loyal customers, and most orders come in on WhatsApp. No big budget. No warehouse full of custom packaging. Just good vegetables, picked fresh.\n\n\nThe brand had to feel the same way: honest, fresh, and close to the soil. It also had to be cheap to run.",
+     "text": "\n\nFeel Good Farm grows organic produce and delivers it across Mumbai. It’s a small team with loyal customers, and most orders come in on WhatsApp. No big budget. No warehouse full of custom packaging. Just good vegetables, picked fresh.\n\n\nThe brand had to feel the same way: honest, fresh, and close to the soil. It also had to be cheap to run.",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"wt\" style=\"--w:300\">Feel Good Farm grows organic produce and delivers it across Mumbai. It’s a small team with loyal customers, and most orders come in on WhatsApp. No big budget. No warehouse full of custom packaging. Just good vegetables, picked fresh.<br><br><br>The brand had to feel the same way: honest, fresh, and close to the soil. It also had to be cheap to run.</span>"
+     "html": "<span class=\"wt\" style=\"--w:300\">\n\nFeel Good Farm grows organic produce and delivers it across Mumbai. It’s a small team with loyal customers, and most orders come in on WhatsApp. No big budget. No warehouse full of custom packaging. Just good vegetables, picked fresh.<br><br><br>The brand had to feel the same way: honest, fresh, and close to the soil. It also had to be cheap to run.</span>"
     }
    },
    {
