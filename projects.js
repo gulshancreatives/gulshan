@@ -301,7 +301,7 @@ window.ALL_PROJECTS = [
      "text": "\n\nOn paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters. \n\ndeworkscommunications.com",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">\n\nOn paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. <br>\nAs art director at DWC, I built the new brand identity around those three letters. <br>\ndeworkscommunications.com</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">\n\nOn paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. <br>\nAs art director at DWC, I built the new brand identity around those three letters. <br>\ndeworkscommunications.com\n\n\n\n</span></span>"
     }
    },
    {
@@ -328,7 +328,7 @@ window.ALL_PROJECTS = [
      "text": "The D stands tall and takes the full height on the left. The W and the C share the right side, one stacked on top of the other. The C stretches wide to fill its space. Together, the three letters lock into one solid, almost square block.",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The D stands tall and takes the full height on the left. The W and the C share the right side, one stacked on top of the other. The C stretches wide to fill its space. Together, the three letters lock into one solid, almost square block.</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">The D stands tall and takes the full height on the left. The W and the C share the right side, one stacked on top of the other. The C stretches wide to fill its space. Together, the three letters lock into one solid, almost square block.\n\n\n\n</span></span>"
     }
    },
    {
