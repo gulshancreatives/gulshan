@@ -282,7 +282,7 @@ window.ALL_PROJECTS = [
  {
   "id": "dwc",
   "title": "DWC",
-  "type": "Brand Identity",
+  "type": "Brand Identity, Rebranding",
   "conceptual": false,
   "pinned": true,
   "cover": "images/projects/dwc/mvie8f5jq0g.webp",
