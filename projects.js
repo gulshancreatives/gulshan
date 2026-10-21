@@ -1,69 +1,6 @@
 /* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.ALL_PROJECTS = [
  {
-  "id": "dwc",
-  "title": "DWC",
-  "type": "Brand Identity",
-  "conceptual": false,
-  "pinned": true,
-  "cover": "images/projects/dwc/mvie8f5jq0g.webp",
-  "blocks": [
-   {
-    "type": "text2",
-    "left": {
-     "text": "Three Letters Clients \nAlready Knew",
-     "size": 40,
-     "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Three Letters Clients \nAlready Knew</span></span>"
-    },
-    "right": {
-     "text": "On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters.",
-     "size": 20,
-     "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:18\"><span class=\"wt\" style=\"--w:300\"><span class=\"sz\" style=\"--s:16\">On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters.</span></span></span>"
-    }
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/dwc/mvie8ttoprt.webp",
-    "ar": 1.7778
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/dwc/mviem78f83h.webp",
-    "ar": 3.072
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/dwc/mvie9nxtaxh.mp4",
-    "ar": 1.7778
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/dwc/mviea7tapx5.webp",
-    "ar": 1.7778
-   },
-   {
-    "type": "side",
-    "left": {
-     "kind": "media",
-     "src": "images/projects/dwc/mvieaxoohea.webp",
-     "ar": 1
-    },
-    "right": {
-     "kind": "media",
-     "src": "images/projects/dwc/mvieb1ckf80.webp",
-     "ar": 1
-    }
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/dwc/mvieba8scb2.webp",
-    "ar": 1.7778
-   }
-  ]
- },
- {
   "id": "navai",
   "title": "NavAI",
   "type": "Branding",
@@ -338,6 +275,69 @@ window.ALL_PROJECTS = [
    {
     "type": "slide",
     "media": "images/projects/feel-good-farms/mv5jzc17r15.webp",
+    "ar": 1.7778
+   }
+  ]
+ },
+ {
+  "id": "dwc",
+  "title": "DWC",
+  "type": "Brand Identity",
+  "conceptual": false,
+  "pinned": true,
+  "cover": "images/projects/dwc/mvie8f5jq0g.webp",
+  "blocks": [
+   {
+    "type": "text2",
+    "left": {
+     "text": "Three Letters Clients \nAlready Knew",
+     "size": 40,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Three Letters Clients \nAlready Knew</span></span>"
+    },
+    "right": {
+     "text": "On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters.",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:18\"><span class=\"wt\" style=\"--w:300\"><span class=\"sz\" style=\"--s:16\">On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters.</span></span></span>"
+    }
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/dwc/mvie8ttoprt.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/dwc/mviem78f83h.webp",
+    "ar": 3.072
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/dwc/mvie9nxtaxh.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/dwc/mviea7tapx5.webp",
+    "ar": 1.7778
+   },
+   {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/dwc/mvieaxoohea.webp",
+     "ar": 1
+    },
+    "right": {
+     "kind": "media",
+     "src": "images/projects/dwc/mvieb1ckf80.webp",
+     "ar": 1
+    }
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/dwc/mvieba8scb2.webp",
     "ar": 1.7778
    }
   ]
