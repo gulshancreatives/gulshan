@@ -288,18 +288,20 @@ window.ALL_PROJECTS = [
   "cover": "images/projects/dwc/mvie8f5jq0g.webp",
   "blocks": [
    {
-    "type": "text2",
+    "type": "side",
     "left": {
+     "kind": "text",
      "text": "Three Letters Clients \nAlready Knew",
-     "size": 40,
+     "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Three Letters Clients \nAlready Knew</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:30\"><span class=\"wt\" style=\"--w:500\">Three Letters Clients <br>Already Knew</span></span>"
     },
     "right": {
+     "kind": "text",
      "text": "On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters. \n\ndeworkscommunications.com",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:18\"><span class=\"wt\" style=\"--w:300\"><span class=\"sz\" style=\"--s:16\">On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. \n\nAs art director at DWC, I built the new brand identity around those three letters. \n\ndeworkscommunications.com\n</span></span></span>"
+     "html": "<span class=\"sz\" style=\"--s:16\"><span class=\"wt\" style=\"--w:300\">On paper, the agency was De Works Communications. The advertising fraternity in India simply call it DWC. Clients had already shortened the name. They said it in meetings, wrote it in emails, and remembered it that way. For an advertising agency that kind of recall takes years to build. The agency didn’t want to lose it. <br>\nAs art director at DWC, I built the new brand identity around those three letters. <br>\ndeworkscommunications.com</span></span>"
     }
    },
    {
