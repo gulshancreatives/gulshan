@@ -115,7 +115,7 @@ window.ALL_PROJECTS = [
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mvcz8psyg28.mp4",
+    "media": "images/projects/navai/mvo6by86tgc.mp4",
     "ar": 1.7778
    },
    {
@@ -140,12 +140,7 @@ window.ALL_PROJECTS = [
    },
    {
     "type": "slide",
-    "media": "images/projects/navai/mvcz8puusca.webp",
-    "ar": 1.7778
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/navai/mvcz8pwpns4.webp",
+    "media": "images/projects/navai/mvo6c5wrfmi.webp",
     "ar": 1.7778
    }
   ]
