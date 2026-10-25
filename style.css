@@ -65,6 +65,9 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 /* ---------- Card links ---------- */
 /* Upcoming ("Coming soon") projects: same layout, not clickable */
 .card--soon { cursor: default; }
+.card--soon::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .6s ease; pointer-events: none; z-index: 0; }
+.card--soon:hover::after { opacity: 1; }
+@media (hover: none) { .card--soon::after { opacity: 0; } }
 .card .card__soon { position: absolute; top: 2.6cqw; right: 2.6cqw; z-index: 2; background: #F3293F; color: #fff; opacity: 1; transform: none; transition: none; }
 a.card { display: block; color: inherit; }
 
