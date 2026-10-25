@@ -94,7 +94,7 @@ function load() {
     var A = parse(r[0]), B = parse(r[1]), hp = A.HOME_PROJECTS;
     var live = A.ALL_PROJECTS || [], drafts = B.DRAFT_PROJECTS || [];
     live.forEach(function (p) { if (p.pinned === undefined) p.pinned = hp ? hp.indexOf(p.id) > -1 : false; });
-    live.concat(drafts).forEach(function (p) { p.conceptual = !!p.conceptual; p.blocks = p.blocks || []; p.blocks.forEach(norm); });
+    live.concat(drafts).forEach(function (p) { p.conceptual = !!p.conceptual; p.upcoming = !!p.upcoming; p.blocks = p.blocks || []; p.blocks.forEach(norm); });
     data = { live: live, drafts: drafts }; dirty = false;
   });
 }
@@ -178,7 +178,7 @@ function card(p, list) {
   return '<div class="pc" data-id="' + esc(p.id) + '" data-list="' + list + '">' + (list === 'live' ? '<div class="pc__drag"><i></i><i></i><i></i><i></i><i></i><i></i></div>' : '') +
     '<div class="pc__thumb">' + mediaEl(p.cover) + '</div><div class="pc__body"><div class="top"><button class="btn sm del" data-act="delcard">Delete project</button><button class="btn sm" data-act="edit">' + (list === 'live' ? 'Edit project' : 'Edit draft') + '</button></div>' +
     '<label class="l">Project name</label><input type="text" class="f-title" value="' + esc(p.title) + '">' +
-    '<div class="opts"><div>Pin to homepage ' + sw('f-pin', p.pinned) + '</div><div>Personal project ' + sw('f-con', p.conceptual) + '</div></div>' +
+    '<div class="opts"><div>Pin to homepage ' + sw('f-pin', p.pinned) + '</div><div>Personal project ' + sw('f-con', p.conceptual) + '</div><div>Coming soon ' + sw('f-up', p.upcoming) + '</div></div>' +
     '<label class="l">Project tags</label><input type="text" class="f-type" placeholder="e.g. Branding, UX" value="' + esc(p.type) + '"></div></div>';
 }
 function dashboard() {
@@ -236,7 +236,7 @@ function openEditor(id) {
   var p = null, isDraft = false;
   if (id) { p = data.live.filter(function (x) { return x.id === id; })[0]; if (!p) { p = data.drafts.filter(function (x) { return x.id === id; })[0]; isDraft = !!p; } }
   if (id && !p) { toast('That project was not found.', true); location.hash = '#/'; return; }
-  ed = { isNew: !p, isDraft: isDraft, orig: p ? p.id : null, proj: p ? JSON.parse(JSON.stringify(p)) : { id: 'tmp' + Math.random().toString(36).slice(2, 7), title: '', type: '', conceptual: false, pinned: true, cover: '', blocks: [] } };
+  ed = { isNew: !p, isDraft: isDraft, orig: p ? p.id : null, proj: p ? JSON.parse(JSON.stringify(p)) : { id: 'tmp' + Math.random().toString(36).slice(2, 7), title: '', type: '', conceptual: false, upcoming: false, pinned: true, cover: '', blocks: [] } };
   ed.proj.blocks.forEach(function (b, i) { b._k = p ? p.blocks[i]._k : b._k; });
   renderEditor();
 }
@@ -279,14 +279,14 @@ function dialog(mode) {
   if (mode === 'publish' && !p.cover) { toast('Please upload a cover first.', true); return; }
   var m = document.createElement('div'); m.className = 'modal';
   m.innerHTML = '<div class="pc"><h3>' + (mode === 'publish' ? 'Publish project' : 'Save as draft') + '</h3><p class="n">These details show on your project cards.</p><label class="l">Project name</label><input type="text" id="d-title" value="' + esc(p.title) + '">' +
-    '<div class="opts"><div>Pin to homepage ' + sw('d-pin', p.pinned) + '</div><div>Personal project ' + sw('d-con', p.conceptual) + '</div></div><label class="l">Project tags</label><input type="text" id="d-type" placeholder="e.g. Branding, UX" value="' + esc(p.type) + '">' +
+    '<div class="opts"><div>Pin to homepage ' + sw('d-pin', p.pinned) + '</div><div>Personal project ' + sw('d-con', p.conceptual) + '</div><div>Coming soon ' + sw('d-up', p.upcoming) + '</div></div><label class="l">Project tags</label><input type="text" id="d-type" placeholder="e.g. Branding, UX" value="' + esc(p.type) + '">' +
     (mode === 'draft' && !ed.isNew && !ed.isDraft ? '<p class="n"><b>Note:</b> saving a live project as a draft removes it from your website until you publish it again.</p>' : '') +
     '<div class="row"><button class="btn grey" id="d-cancel">Cancel</button><button class="btn" id="d-ok">' + (mode === 'publish' ? 'Publish' : 'Save draft') + '</button></div></div>';
   document.body.appendChild(m); $('#d-title').focus();
   $('#d-cancel').onclick = function () { m.remove(); };
   $('#d-ok').onclick = function () {
     var t = $('#d-title').value.trim(); if (!t) { toast('Please give the project a name.', true); return; }
-    var vals = { title: t, type: $('#d-type').value.trim(), pinned: $('.d-pin', m).checked, conceptual: $('.d-con', m).checked };
+    var vals = { title: t, type: $('#d-type').value.trim(), pinned: $('.d-pin', m).checked, conceptual: $('.d-con', m).checked, upcoming: $('.d-up', m).checked };
     m.remove(); finalize(mode, vals);
   };
 }
@@ -466,7 +466,7 @@ app.addEventListener('input', function (e) {
   if (pc) {
     var p = (pc.dataset.list === 'live' ? data.live : data.drafts).filter(function (x) { return x.id === pc.dataset.id; })[0]; if (!p) return;
     if (t.classList.contains('f-title')) p.title = t.value; else if (t.classList.contains('f-type')) p.type = t.value;
-    else if (t.classList.contains('f-pin')) p.pinned = t.checked; else if (t.classList.contains('f-con')) p.conceptual = t.checked;
+    else if (t.classList.contains('f-pin')) p.pinned = t.checked; else if (t.classList.contains('f-con')) p.conceptual = t.checked; else if (t.classList.contains('f-up')) p.upcoming = t.checked;
     mark(); return;
   }
   if (!ed) return; var b = ctxBlock(t); if (!b) return; var c = cellOf(b, t).c;
