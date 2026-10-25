@@ -353,6 +353,11 @@ window.ALL_PROJECTS = [
     "type": "slide",
     "media": "images/projects/dwc/mvieba8scb2.webp",
     "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/dwc/mvo6d8j5kx6.webp",
+    "ar": 1.7778
    }
   ]
  }
