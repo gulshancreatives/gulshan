@@ -1,6 +1,16 @@
 /* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.ALL_PROJECTS = [
  {
+  "id": "visionai",
+  "title": "VisionAI",
+  "type": "UI/UX",
+  "conceptual": false,
+  "upcoming": true,
+  "pinned": true,
+  "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
+  "blocks": []
+ },
+ {
   "id": "navai",
   "title": "NavAI",
   "type": "Branding",
@@ -143,7 +153,8 @@ window.ALL_PROJECTS = [
     "media": "images/projects/navai/mvo6c5wrfmi.webp",
     "ar": 1.7778
    }
-  ]
+  ],
+  "upcoming": false
  },
  {
   "id": "feel-good-farms",
@@ -272,7 +283,8 @@ window.ALL_PROJECTS = [
     "media": "images/projects/feel-good-farms/mv5jzc17r15.webp",
     "ar": 1.7778
    }
-  ]
+  ],
+  "upcoming": false
  },
  {
   "id": "dwc",
@@ -359,6 +371,7 @@ window.ALL_PROJECTS = [
     "media": "images/projects/dwc/mvo6d8j5kx6.webp",
     "ar": 1.7778
    }
-  ]
+  ],
+  "upcoming": false
  }
 ];
