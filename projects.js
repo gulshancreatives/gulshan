@@ -1,16 +1,6 @@
 /* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.ALL_PROJECTS = [
  {
-  "id": "visionai",
-  "title": "VisionAI",
-  "type": "UI/UX",
-  "conceptual": false,
-  "upcoming": true,
-  "pinned": true,
-  "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
-  "blocks": []
- },
- {
   "id": "navai",
   "title": "NavAI",
   "type": "Branding",
@@ -373,5 +363,15 @@ window.ALL_PROJECTS = [
    }
   ],
   "upcoming": false
+ },
+ {
+  "id": "visionai",
+  "title": "VisionAI",
+  "type": "UI/UX",
+  "conceptual": false,
+  "upcoming": true,
+  "pinned": true,
+  "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
+  "blocks": []
  }
 ];
