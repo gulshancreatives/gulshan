@@ -82,12 +82,14 @@
     }
     var work = document.getElementById('work');
     list.forEach(function (p) {
-      var card = document.createElement('a');
-      card.className = 'card';
-      card.href = 'project.html?id=' + encodeURIComponent(p.id);
+      var soon = !!p.upcoming;
+      var card = document.createElement(soon ? 'div' : 'a');
+      card.className = 'card' + (soon ? ' card--soon' : '');
+      if (!soon) card.href = 'project.html?id=' + encodeURIComponent(p.id);
       card.innerHTML = media(p.cover, p.title + ' ' + p.type + ' cover', p.poster) +
         '<div class="card__tags"><span class="tag tag--name">' + esc(p.title) + '</span>' + tagList(p.type) + '</div>' +
-        (p.conceptual ? '<span class="card__conceptual tag tag--concept">Conceptual work</span>' : '');
+        (p.conceptual ? '<span class="card__conceptual tag tag--concept">Conceptual work</span>' : '') +
+        (soon ? '<span class="card__soon tag">Coming soon</span>' : '');
       work.appendChild(card);
     });
   }
@@ -101,7 +103,7 @@
     var p = byId(id);
     var cover = document.getElementById('pcover');
     var blocks = document.getElementById('blocks');
-    if (!p) {
+    if (!p || p.upcoming) {
       cover.style.display = 'none';
       blocks.innerHTML = '<p class="notfound">That project could not be found. <a href="work.html">See all work</a></p>';
     } else {

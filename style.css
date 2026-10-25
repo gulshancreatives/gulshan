@@ -63,6 +63,9 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .work--page { padding-top: 1.2vw; padding-bottom: 9vw; }
 
 /* ---------- Card links ---------- */
+/* Upcoming ("Coming soon") projects: same layout, not clickable */
+.card--soon { cursor: default; }
+.card .card__soon { position: absolute; top: 2.6cqw; right: 2.6cqw; z-index: 2; background: #F3293F; color: #fff; opacity: 1; transform: none; transition: none; }
 a.card { display: block; color: inherit; }
 
 /* ---------- Project page ---------- */
