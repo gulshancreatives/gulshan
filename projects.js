@@ -370,7 +370,7 @@ window.ALL_PROJECTS = [
   "type": "Art Direction, Copywriting",
   "conceptual": true,
   "upcoming": false,
-  "pinned": true,
+  "pinned": false,
   "cover": "images/projects/spec-ads/mvpp49gqg62.mp4",
   "blocks": [
    {
