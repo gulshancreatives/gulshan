@@ -1,6 +1,97 @@
 /* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.ALL_PROJECTS = [
  {
+  "id": "spec-ads",
+  "title": "Spec Ads",
+  "type": "Art Direction, Copywriting",
+  "conceptual": true,
+  "upcoming": false,
+  "pinned": true,
+  "cover": "images/projects/spec-ads/mvpp49gqg62.mp4",
+  "blocks": [
+   {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp4tkqg4s.webp",
+     "ar": 0.8
+    },
+    "right": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp564kq3i.webp",
+     "ar": 0.8
+    }
+   },
+   {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp67b798h.webp",
+     "ar": 0.8
+    },
+    "right": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp6co1evt.webp",
+     "ar": 0.8
+    }
+   },
+   {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp7aj3jm2.webp",
+     "ar": 0.8
+    },
+    "right": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp7fou0ij.webp",
+     "ar": 0.8
+    }
+   },
+   {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp7y4wpsr.webp",
+     "ar": 0.8
+    },
+    "right": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp81eya2p.webp",
+     "ar": 0.8
+    }
+   },
+   {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp8bwfqcv.webp",
+     "ar": 0.8
+    },
+    "right": {
+     "kind": "media",
+     "src": "images/projects/spec-ads/mvpp8fh5ag4.webp",
+     "ar": 0.8
+    }
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/spec-ads/mvpp8oemzs0.webp",
+    "ar": 1.5039
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/spec-ads/mvpp9bk1eq6.webp",
+    "ar": 1.5039
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/spec-ads/mvpp91auayl.webp",
+    "ar": 1.5039
+   }
+  ]
+ },
+ {
   "id": "navai",
   "title": "NavAI",
   "type": "Branding",
