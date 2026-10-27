@@ -490,7 +490,18 @@ window.ALL_PROJECTS = [
     "ar": 1.5039
    }
   ],
-  "credits": []
+  "credits": [
+   {
+    "heading": "My Role",
+    "lines": "Art direction\nCopywriting"
+   }
+  ],
+  "creditTags": [
+   "Advertising",
+   "Art direction",
+   "Copywriting",
+   "Poster"
+  ]
  },
  {
   "id": "visionai",
