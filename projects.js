@@ -499,8 +499,9 @@ window.ALL_PROJECTS = [
   "creditTags": [
    "Advertising",
    "Art direction",
-   "Copywriting",
-   "Poster"
+   "Poster",
+   "||",
+   "Copywriting"
   ]
  },
  {
