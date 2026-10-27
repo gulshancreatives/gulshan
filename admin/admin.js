@@ -94,7 +94,7 @@ function load() {
     var A = parse(r[0]), B = parse(r[1]), hp = A.HOME_PROJECTS;
     var live = A.ALL_PROJECTS || [], drafts = B.DRAFT_PROJECTS || [];
     live.forEach(function (p) { if (p.pinned === undefined) p.pinned = hp ? hp.indexOf(p.id) > -1 : false; });
-    live.concat(drafts).forEach(function (p) { p.conceptual = !!p.conceptual; p.upcoming = !!p.upcoming; p.blocks = p.blocks || []; p.blocks.forEach(norm); });
+    live.concat(drafts).forEach(function (p) { p.conceptual = !!p.conceptual; p.upcoming = !!p.upcoming; p.credits = (p.credits || []).map(function (g) { return { heading: g.heading || '', lines: g.lines || '' }; }); p.blocks = p.blocks || []; p.blocks.forEach(norm); });
     data = { live: live, drafts: drafts }; dirty = false;
   });
 }
@@ -236,9 +236,36 @@ function openEditor(id) {
   var p = null, isDraft = false;
   if (id) { p = data.live.filter(function (x) { return x.id === id; })[0]; if (!p) { p = data.drafts.filter(function (x) { return x.id === id; })[0]; isDraft = !!p; } }
   if (id && !p) { toast('That project was not found.', true); location.hash = '#/'; return; }
-  ed = { isNew: !p, isDraft: isDraft, orig: p ? p.id : null, proj: p ? JSON.parse(JSON.stringify(p)) : { id: 'tmp' + Math.random().toString(36).slice(2, 7), title: '', type: '', conceptual: false, upcoming: false, pinned: true, cover: '', blocks: [] } };
+  ed = { isNew: !p, isDraft: isDraft, orig: p ? p.id : null, proj: p ? JSON.parse(JSON.stringify(p)) : { id: 'tmp' + Math.random().toString(36).slice(2, 7), title: '', type: '', conceptual: false, upcoming: false, pinned: true, cover: '', credits: [], blocks: [] } };
   ed.proj.blocks.forEach(function (b, i) { b._k = p ? p.blocks[i]._k : b._k; });
+  if (!Array.isArray(ed.proj.creditTags)) ed.proj.creditTags = String(ed.proj.type || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean);
   renderEditor();
+}
+function credHTML(p) {
+  var tags = p.creditTags || [], gs = p.credits || [];
+  return '<div class="cred" id="cred"><div class="cred__head"><h3>Credits</h3><p>Shows at the end of this project. Tags go on the left; headings and names go on the right. Type anything you like.</p></div>' +
+    '<div class="cred__body"><div class="cred__left"><span class="cl">Left side: tags</span><div class="cred__tags">' +
+      tags.map(function (t, i) { return '<span class="tg" data-i="' + i + '">' + esc(t) + '<button type="button" data-act="ctag-del" title="Remove tag">×</button></span>'; }).join('') +
+      '<input type="text" class="ct-in" placeholder="Type a tag, press Enter"></div><p class="cred__hint">Press Enter or comma after each tag.</p></div>' +
+    '<div class="cred__right"><span class="cl">Right side: headings and names</span>' +
+      gs.map(function (g, i) {
+        return '<div class="cg" data-i="' + i + '"><div class="cg__top"><input type="text" class="cg-h" placeholder="Type a heading, e.g. My role" value="' + esc(g.heading) + '"><button type="button" class="x" data-act="cred-del" title="Remove this heading">×</button></div>' +
+          '<textarea class="cg-l" rows="' + Math.max(3, String(g.lines || '').split('\n').length + 1) + '" placeholder="One name or role per line, e.g.&#10;Jayant Chavan (Website Design)">' + esc(g.lines) + '</textarea></div>';
+      }).join('') +
+      '<button type="button" class="chip" data-act="cred-add">+ Add heading</button>' +
+    '</div></div></div>';
+}
+function refreshCred(focusSel) {
+  var c = $('#cred'); if (!c) return; var t = document.createElement('div'); t.innerHTML = credHTML(ed.proj); c.replaceWith(t.firstChild);
+  if (focusSel) { var els = $$(focusSel), l = els[els.length - 1]; if (l) l.focus(); }
+}
+function addCTag(inp) {
+  var v = inp.value.replace(/,/g, ' ').trim(); inp.value = ''; if (!v) return false;
+  var tg = ed.proj.creditTags = ed.proj.creditTags || []; if (tg.indexOf(v) < 0) tg.push(v); return true;
+}
+function cleanCred(list) {
+  return (list || []).map(function (g) { return { heading: (g.heading || '').trim(), lines: String(g.lines || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean).join('\n') }; })
+    .filter(function (g) { return g.heading || g.lines; });
 }
 function renderEditor() {
   var p = ed.proj, y = window.scrollY;
@@ -248,7 +275,7 @@ function renderEditor() {
       : '<div class="up"><div><div><h3>Upload cover</h3><p>You can upload jpeg, png or video here</p></div><button class="btn" data-act="cover-pick">Select Files</button></div></div>') +
     '<div class="blocks" id="blocks">' + p.blocks.map(blockHTML).join('') + '</div>' +
     (p.blocks.length ? '' : '<div class="up drop" id="drop"><div><h3>Drop your files to upload</h3><p>or select your file here.</p><button class="btn" data-act="drop-pick">Select Files</button><p>Drop all your images &amp; videos here</p></div></div>') +
-    '<div style="height:10vw"></div>';
+    credHTML(p) + '<div style="height:10vw"></div>';
   window.scrollTo(0, y);
   if ($('#blocks .wrap')) Sortable.create($('#blocks'), { handle: '.drag', animation: 150, onEnd: function () {
     ed.proj.blocks = $$('#blocks > .wrap').map(function (w) { return ed.proj.blocks.filter(function (b) { return b._k === w.dataset.k; })[0]; });
@@ -291,7 +318,7 @@ function dialog(mode) {
   };
 }
 function finalize(mode, vals) {
-  var p = ed.proj; Object.assign(p, vals);
+  var p = ed.proj; Object.assign(p, vals); p.credits = cleanCred(p.credits); if (p.creditTags) p.creditTags = p.creditTags.map(function (t) { return t.trim(); }).filter(function (t, i, a) { return t && a.indexOf(t) === i; });
   if (ed.isNew) {
     var taken = {}; data.live.concat(data.drafts).forEach(function (x) { taken[x.id] = 1; });
     var base = slug(p.title), id = base, n = 2; while (taken[id]) id = base + '-' + n++;
@@ -436,6 +463,9 @@ app.addEventListener('click', function (e) {
   else if (act === 'reset') { if (confirm('This removes the saved login from this device. You will need your GitHub token again.')) { localStorage.removeItem('adminVault'); viewAuth(); } }
   else if (act === 'delcard') delCard(a.closest('.pc').dataset.id);
   else if (act === 'clearfmt') { var cell0 = a.closest('.tcell'), host0 = cell0.querySelector('.rt'), cc = cellOf(b, a).c; host0.querySelectorAll('span').forEach(unwrap); host0.normalize(); syncRT(cc, host0); setSel(cell0.querySelector('select.sz'), cc.size); setSel(cell0.querySelector('select.wt'), cc.weight); }
+  else if (act === 'cred-add') { ed.proj.credits = ed.proj.credits || []; ed.proj.credits.push({ heading: '', lines: '' }); refreshCred('#cred .cg-h'); }
+  else if (act === 'cred-del') { ed.proj.credits.splice(+a.closest('.cg').dataset.i, 1); refreshCred(); }
+  else if (act === 'ctag-del') { ed.proj.creditTags.splice(+a.closest('.tg').dataset.i, 1); refreshCred('#cred .ct-in'); }
   else if (act === 'new') location.hash = '#/new';
   else if (act === 'edit') location.hash = '#/edit/' + a.closest('.pc').dataset.id;
   else if (act === 'discard') { busy('Reloading…'); load().then(dashboard).then(function () { busy(); }); }
@@ -461,6 +491,14 @@ app.addEventListener('click', function (e) {
   else if (act === 'publish') dialog('publish');
   else if (act === 'delproj') delProject();
 });
+app.addEventListener('keydown', function (e) {
+  var t = e.target; if (!ed || !t.classList || !t.classList.contains('ct-in')) return;
+  if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); if (addCTag(t)) refreshCred('#cred .ct-in'); }
+  else if (e.key === 'Backspace' && !t.value && ed.proj.creditTags.length) { ed.proj.creditTags.pop(); refreshCred('#cred .ct-in'); }
+});
+app.addEventListener('focusout', function (e) {
+  var t = e.target; if (ed && t.classList && t.classList.contains('ct-in') && t.value.trim()) { addCTag(t); setTimeout(function () { refreshCred(); }, 0); }
+});
 app.addEventListener('input', function (e) {
   var t = e.target, pc = t.closest('.pc');
   if (pc) {
@@ -469,6 +507,7 @@ app.addEventListener('input', function (e) {
     else if (t.classList.contains('f-pin')) p.pinned = t.checked; else if (t.classList.contains('f-con')) p.conceptual = t.checked; else if (t.classList.contains('f-up')) p.upcoming = t.checked;
     mark(); return;
   }
+  if (ed && t.closest('.cg')) { var cg = t.closest('.cg'), g = ed.proj.credits[+cg.dataset.i]; if (g) { if (t.classList.contains('cg-h')) g.heading = t.value; else g.lines = t.value; } return; }
   if (!ed) return; var b = ctxBlock(t); if (!b) return; var c = cellOf(b, t).c;
   if (t.classList.contains('rt')) syncRT(c, t);
   else if (t.classList.contains('sz') || t.classList.contains('wt')) {

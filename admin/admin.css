@@ -79,3 +79,24 @@ input, textarea, select { font:inherit; color:inherit; }
 .toast { position:fixed; top:18px; left:50%; transform:translate(-50%,-90px); background:#1c1c1c; color:#fff; padding:12px 22px; border-radius:8px; z-index:300; transition:.3s; max-width:90vw; } .toast.show { transform:translate(-50%,0); } .toast.err { background:var(--red); }
 @media (max-width:900px) { :root { --pad:20px; --m:20px; --gap:14px; } .hero .hi { font-size:28px; } .hero .sk { font-size:14px; } .hero .sk em { font-size:12px; } .sec h2 { font-size:22px; } .count { font-size:14px; padding:2px 10px; }
  .pc { flex-wrap:wrap; } .pc__thumb { flex-basis:100%; } .pc label.l, .pc input[type=text], .pc .opts div { font-size:15px; } .pc input[type=text] { padding:10px; } .ehead h1 { font-size:22px; } .up h3 { font-size:18px; } .up p { font-size:14px; } .tcell .rt, .rt .sz { font-size:calc(var(--s) * .5px); } .cols { grid-template-columns:1fr; } .anav { gap:16px; font-size:12px; } .anav nav { gap:16px; } }
+
+/* ---------- Credits editor ---------- */
+.cred { margin:3vw var(--m) 0; border:1px solid #ddd; border-radius:12px; padding:22px 24px 26px; background:#fff; }
+.cred__head h3 { font-size:22px; font-weight:500; color:#333; } .cred__head p { color:#888; font-size:14px; margin-top:4px; line-height:1.4; max-width:620px; }
+.cred__body { display:grid; grid-template-columns:42% 1fr; gap:28px; margin-top:20px; }
+.cred .cl { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:#999; margin-bottom:10px; }
+.cred__tags { display:flex; flex-wrap:wrap; gap:8px; } .cred__tags span { background:#e6e6e6; border-radius:4px; padding:8px 14px; font-size:14px; color:#222; } .cred__tags em { color:#aaa; font-size:13px; }
+.cred .cg { border:1px dashed #bbb; border-radius:8px; padding:10px; margin-bottom:12px; background:#fafafa; }
+.cred .cg__top { display:flex; gap:8px; margin-bottom:8px; }
+.cred .cg-h { flex:1; padding:9px 12px; border:1px solid #ccc; border-radius:4px; background:#fff; font-size:15px; color:#222; font-weight:500; }
+.cred .cg-l { width:100%; padding:9px 12px; border:1px solid #ccc; border-radius:4px; background:#fff; font-size:15px; line-height:1.5; resize:vertical; min-height:80px; }
+.cred .cg-h:focus, .cred .cg-l:focus { outline:0; border-color:var(--red); }
+.cred .x { position:static; height:auto; width:36px; border-radius:4px; background:#e4e4e4; color:#666; font-size:20px; line-height:1; } .cred .x:hover { background:#fbd7dc; color:var(--red); }
+.cred__add { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:4px; } .cred__add > span { font-size:13px; color:#888; }
+.cred .chip { border:1px solid #ccc; border-radius:99px; padding:6px 14px; font-size:13px; color:#444; background:#fff; } .cred .chip:hover { border-color:var(--red); color:var(--red); }
+@media (max-width:768px) { .cred { margin:6vw 16px 0; padding:16px; } .cred__body { grid-template-columns:1fr; gap:20px; } }
+.cred__tags { align-items:center; }
+.cred .tg { display:inline-flex; align-items:center; gap:6px; background:#e6e6e6; border-radius:4px; padding:6px 6px 6px 14px; font-size:14px; color:#222; }
+.cred .tg button { width:20px; height:20px; border-radius:3px; font-size:15px; line-height:1; color:#777; } .cred .tg button:hover { background:#fbd7dc; color:var(--red); }
+.cred .ct-in { flex:1; min-width:170px; padding:8px 12px; border:1px dashed #bbb; border-radius:4px; font-size:14px; background:#fff; } .cred .ct-in:focus { outline:0; border-color:var(--red); }
+.cred__hint { font-size:12px; color:#aaa; margin-top:8px; }
