@@ -293,7 +293,19 @@ window.ALL_PROJECTS = [
    }
   ],
   "upcoming": false,
-  "credits": []
+  "credits": [
+   {
+    "heading": "My Role",
+    "lines": "Art direction\nLogo design"
+   }
+  ],
+  "creditTags": [
+   "Branding",
+   "Brand Identity",
+   "Logo Design",
+   "||",
+   "Art direction"
+  ]
  },
  {
   "id": "dwc",
