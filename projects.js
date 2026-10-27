@@ -144,7 +144,8 @@ window.ALL_PROJECTS = [
     "ar": 1.7778
    }
   ],
-  "upcoming": false
+  "upcoming": false,
+  "credits": []
  },
  {
   "id": "feel-good-farms",
@@ -274,7 +275,8 @@ window.ALL_PROJECTS = [
     "ar": 1.7778
    }
   ],
-  "upcoming": false
+  "upcoming": false,
+  "credits": []
  },
  {
   "id": "dwc",
@@ -362,7 +364,23 @@ window.ALL_PROJECTS = [
     "ar": 1.7778
    }
   ],
-  "upcoming": false
+  "upcoming": false,
+  "credits": [
+   {
+    "heading": "My Role",
+    "lines": "Art direction\nLogo design"
+   },
+   {
+    "heading": "Project Team",
+    "lines": "Preksha Toraskar (Junior graphic designer)"
+   }
+  ],
+  "creditTags": [
+   "Brand Identity",
+   "Rebranding",
+   "Logo",
+   "Identity"
+  ]
  },
  {
   "id": "spec-ads",
@@ -453,7 +471,8 @@ window.ALL_PROJECTS = [
     "media": "images/projects/spec-ads/mvpp91auayl.webp",
     "ar": 1.5039
    }
-  ]
+  ],
+  "credits": []
  },
  {
   "id": "visionai",
@@ -463,6 +482,7 @@ window.ALL_PROJECTS = [
   "upcoming": true,
   "pinned": true,
   "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
-  "blocks": []
+  "blocks": [],
+  "credits": []
  }
 ];
