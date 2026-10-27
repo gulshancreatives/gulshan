@@ -245,8 +245,8 @@ function credHTML(p) {
   var tags = p.creditTags || [], gs = p.credits || [];
   return '<div class="cred" id="cred"><div class="cred__head"><h3>Credits</h3><p>Shows at the end of this project. Tags go on the left; headings and names go on the right. Type anything you like.</p></div>' +
     '<div class="cred__body"><div class="cred__left"><span class="cl">Left side: tags</span><div class="cred__tags">' +
-      tags.map(function (t, i) { return '<span class="tg" data-i="' + i + '">' + esc(t) + '<button type="button" data-act="ctag-del" title="Remove tag">×</button></span>'; }).join('') +
-      '<input type="text" class="ct-in" placeholder="Type a tag, press Enter"></div><p class="cred__hint">Press Enter or comma after each tag.</p></div>' +
+      tags.map(function (t, i) { return '<span class="tg' + (t === '||' ? ' br' : '') + '" data-i="' + i + '">' + (t === '||' ? '↵ New line' : esc(t)) + '<button type="button" data-act="ctag-del" title="Remove tag">×</button></span>'; }).join('') +
+      '<input type="text" class="ct-in" placeholder="Type a tag, press Enter"></div><div class="cred__hint">Press Enter or comma after each tag. <button type="button" class="chip" data-act="ctag-br">↵ Start a new line here</button></div></div>' +
     '<div class="cred__right"><span class="cl">Right side: headings and names</span>' +
       gs.map(function (g, i) {
         return '<div class="cg" data-i="' + i + '"><div class="cg__top"><input type="text" class="cg-h" placeholder="Type a heading, e.g. My role" value="' + esc(g.heading) + '"><button type="button" class="x" data-act="cred-del" title="Remove this heading">×</button></div>' +
@@ -260,7 +260,7 @@ function refreshCred(focusSel) {
   if (focusSel) { var els = $$(focusSel), l = els[els.length - 1]; if (l) l.focus(); }
 }
 function addCTag(inp) {
-  var v = inp.value.replace(/,/g, ' ').trim(); inp.value = ''; if (!v) return false;
+  var v = inp.value.replace(/,/g, ' ').trim(); inp.value = ''; if (!v || v === '||') return false;
   var tg = ed.proj.creditTags = ed.proj.creditTags || []; if (tg.indexOf(v) < 0) tg.push(v); return true;
 }
 function cleanCred(list) {
@@ -318,7 +318,7 @@ function dialog(mode) {
   };
 }
 function finalize(mode, vals) {
-  var p = ed.proj; Object.assign(p, vals); p.credits = cleanCred(p.credits); if (p.creditTags) p.creditTags = p.creditTags.map(function (t) { return t.trim(); }).filter(function (t, i, a) { return t && a.indexOf(t) === i; });
+  var p = ed.proj; Object.assign(p, vals); p.credits = cleanCred(p.credits); if (p.creditTags) p.creditTags = p.creditTags.map(function (t) { return t.trim(); }).filter(function (t, i, a) { return t && (t === '||' || a.indexOf(t) === i); }); while (p.creditTags[p.creditTags.length - 1] === '||') p.creditTags.pop(); while (p.creditTags[0] === '||') p.creditTags.shift();
   if (ed.isNew) {
     var taken = {}; data.live.concat(data.drafts).forEach(function (x) { taken[x.id] = 1; });
     var base = slug(p.title), id = base, n = 2; while (taken[id]) id = base + '-' + n++;
@@ -465,6 +465,7 @@ app.addEventListener('click', function (e) {
   else if (act === 'clearfmt') { var cell0 = a.closest('.tcell'), host0 = cell0.querySelector('.rt'), cc = cellOf(b, a).c; host0.querySelectorAll('span').forEach(unwrap); host0.normalize(); syncRT(cc, host0); setSel(cell0.querySelector('select.sz'), cc.size); setSel(cell0.querySelector('select.wt'), cc.weight); }
   else if (act === 'cred-add') { ed.proj.credits = ed.proj.credits || []; ed.proj.credits.push({ heading: '', lines: '' }); refreshCred('#cred .cg-h'); }
   else if (act === 'cred-del') { ed.proj.credits.splice(+a.closest('.cg').dataset.i, 1); refreshCred(); }
+  else if (act === 'ctag-br') { ed.proj.creditTags.push('||'); refreshCred('#cred .ct-in'); }
   else if (act === 'ctag-del') { ed.proj.creditTags.splice(+a.closest('.tg').dataset.i, 1); refreshCred('#cred .ct-in'); }
   else if (act === 'new') location.hash = '#/new';
   else if (act === 'edit') location.hash = '#/edit/' + a.closest('.pc').dataset.id;

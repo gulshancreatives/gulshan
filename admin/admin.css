@@ -100,3 +100,6 @@ input, textarea, select { font:inherit; color:inherit; }
 .cred .tg button { width:20px; height:20px; border-radius:3px; font-size:15px; line-height:1; color:#777; } .cred .tg button:hover { background:#fbd7dc; color:var(--red); }
 .cred .ct-in { flex:1; min-width:170px; padding:8px 12px; border:1px dashed #bbb; border-radius:4px; font-size:14px; background:#fff; } .cred .ct-in:focus { outline:0; border-color:var(--red); }
 .cred__hint { font-size:12px; color:#aaa; margin-top:8px; }
+.cred .tg.br { background:transparent; border:1px dashed #bbb; color:#888; font-size:12px; }
+.cred__hint .chip { margin-left:8px; padding:3px 10px; font-size:12px; }
+.cred__hint { display:flex; flex-wrap:wrap; align-items:center; }
