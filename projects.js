@@ -378,8 +378,9 @@ window.ALL_PROJECTS = [
   "creditTags": [
    "Brand Identity",
    "Rebranding",
-   "Logo",
-   "Identity"
+   "Identity",
+   "||",
+   "Logo Design"
   ]
  },
  {
