@@ -140,7 +140,7 @@
       var tags = Array.isArray(p.creditTags) ? p.creditTags.filter(Boolean) : String(p.type || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean);
       if (groups.length || (Array.isArray(p.creditTags) && tags.length)) {
         var cr = document.createElement('section'); cr.className = 'credits';
-        cr.innerHTML = '<div class="credits__tags">' + tags.map(function (t) { return '<span class="ctag">' + esc(t) + '</span>'; }).join('') + '</div>' +
+        cr.innerHTML = '<div class="credits__tags">' + tags.map(function (t) { return t === '||' ? '<span class="ctag-br"></span>' : '<span class="ctag">' + esc(t) + '</span>'; }).join('') + '</div>' +
           '<div class="credits__list">' + groups.map(function (g) {
             var ls = String(g.lines || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
             return '<div class="cg">' + (g.heading ? '<h3 class="cg__h">' + esc(g.heading) + '</h3>' : '') + ls.map(function (l) { return '<p class="cg__l">' + esc(l) + '</p>'; }).join('') + '</div>';

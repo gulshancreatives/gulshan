@@ -138,11 +138,13 @@ body[data-page="home"] .work { padding-bottom: 2vw; }
 :root[data-theme="light"] { --ctag: #E6E6E6; --chead: #8c8c8c; }
 :root[data-theme="dark"]  { --ctag: #2c2c2c; --chead: #8a8a8a; }
 .credits { display: grid; grid-template-columns: 42vw 1fr; margin-top: 5.4vw; }
-.credits__tags { display: flex; flex-wrap: wrap; align-content: flex-start; gap: .83vw .9vw; padding-right: 2vw; }
-.ctag { display: inline-flex; align-items: center; height: 2.5vw; padding: 0 1.46vw; border-radius: .35vw; background: var(--ctag); color: var(--fg); font: 400 1.39vw/1 var(--body); white-space: nowrap; transition: background .3s, color .3s; }
+.credits__tags { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 0 .9vw; padding-right: 2vw; }
+.ctag { display: inline-flex; align-items: center; height: 2.5vw; padding: 0 1.46vw; border-radius: .35vw; background: var(--ctag); color: var(--fg); font: 300 1.39vw/1 var(--body); white-space: nowrap; transition: background .3s, color .3s; }
+.ctag { margin-bottom: .9vw; }
+.ctag-br { flex-basis: 100%; height: 0; }
 .cg + .cg { margin-top: 2.8vw; }
-.cg__h { font: 400 1.67vw/1.3 var(--body); color: var(--chead); margin-bottom: .2vw; }
-.cg__l { font: 400 1.67vw/1.57 var(--body); color: var(--fg); }
+.cg__h { font: 300 1.67vw/1.3 var(--body); color: var(--chead); margin-bottom: .2vw; }
+.cg__l { font: 300 1.67vw/1.57 var(--body); color: var(--fg); }
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
   :root { --m: 4.2vw; --gap: 3vw; --t-above: 6vw; --t-below: 12vw; --pad: 4.2vw; }
@@ -155,7 +157,8 @@ body[data-page="home"] .work { padding-bottom: 2vw; }
   .side__text .t-h + .t-b { margin-top: 3vw; }
   .blocks { padding-bottom: 24vw; }
   .credits { grid-template-columns: 1fr; margin-top: 9vw; }
-  .credits__tags { gap: 9px; padding-right: 0; }
+  .credits__tags { gap: 0 9px; padding-right: 0; }
+  .ctag { margin-bottom: 9px; }
   .ctag { height: 23px; padding: 0 12px; border-radius: 3px; font-size: 11px; }
   .credits__list { margin-top: 12vw; }
   .cg + .cg { margin-top: 10vw; }
