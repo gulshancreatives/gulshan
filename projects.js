@@ -145,7 +145,24 @@ window.ALL_PROJECTS = [
    }
   ],
   "upcoming": false,
-  "credits": []
+  "credits": [
+   {
+    "heading": "My Role",
+    "lines": "Design Lead"
+   },
+   {
+    "heading": "Project Team",
+    "lines": "Jayant Chavan (Website Design)\nNitin Rajput (Website Development)\nSharyu (UI Design)\nAkansha Bishi (UI Design)\nRohit Gond (Frontend Developer)"
+   }
+  ],
+  "creditTags": [
+   "Branding",
+   "Identity Design",
+   "Logo",
+   "Technology",
+   "UI/UX",
+   "Digital"
+  ]
  },
  {
   "id": "feel-good-farms",
