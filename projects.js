@@ -565,10 +565,10 @@ window.ALL_PROJECTS = [
     },
     "right": {
      "kind": "text",
-     "text": "\n\nThe song \"Aami chini go chini\" is one of the Tagore songs I have grown up listening to. I was in my eighth standard when our music teacher in school taught us this song. I remember we would practice it daily on harmonium. \n\n\nBeing a popular song it was recomposed again & again by different singers. This version comes from a Bengali film called \"Adda\" \n\n\nFilm : Adda \n\n\nSong : Aami chini go chini \n\n\nMusic by : Suvam Moitra, Joydeep Banerjee \n\n\nSung by : Suvam Moitra",
+     "text": "\n\n\nThe song \"Aami chini go chini\" is one of the Tagore songs I have grown up listening to. I was in my eighth standard when our music teacher in school taught us this song. I remember we would practice it daily on harmonium. \n\n\nBeing a popular song it was recomposed again & again by different singers. This version comes from a Bengali film called \"Adda\" \n\n\nFilm : Adda \n\n\nSong : Aami chini go chini \n\n\nMusic by : Suvam Moitra, Joydeep Banerjee \n\n\nSung by : Suvam Moitra",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:16\">\n\nThe song &quot;Aami chini go chini&quot; is one of the Tagore songs I have grown up listening to. I was in my eighth standard when our music teacher in school taught us this song. I remember we would practice it daily on harmonium. <br><br><br>Being a popular song it was recomposed again &amp; again by different singers. This version comes from a Bengali film called &quot;Adda&quot; <br><br><br>Film : Adda <br><br><br>Song : Aami chini go chini <br><br><br>Music by : Suvam Moitra, Joydeep Banerjee <br><br><br>Sung by : Suvam Moitra</span>"
+     "html": "<span class=\"sz\" style=\"--s:16\">\n\n\nThe song &quot;Aami chini go chini&quot; is one of the Tagore songs I have grown up listening to. I was in my eighth standard when our music teacher in school taught us this song. I remember we would practice it daily on harmonium. <br><br><br>Being a popular song it was recomposed again &amp; again by different singers. This version comes from a Bengali film called &quot;Adda&quot; <br><br><br>Film : Adda <br><br><br>Song : Aami chini go chini <br><br><br>Music by : Suvam Moitra, Joydeep Banerjee <br><br><br>Sung by : Suvam Moitra</span>"
     }
    },
    {
