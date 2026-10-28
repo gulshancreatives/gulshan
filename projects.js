@@ -422,6 +422,20 @@ window.ALL_PROJECTS = [
   "cover": "images/projects/spec-ads/mvpp49gqg62.mp4",
   "blocks": [
    {
+    "type": "text2",
+    "left": {
+     "text": "\nNo client. No brief. \nJust ideas.",
+     "size": 40,
+     "weight": 400
+    },
+    "right": {
+     "text": "\n\nThese are a set of ads made without a client, a brief or a deadline. For each one I came up with the idea, wrote the copy and built the art myself, and I had one goal : say it in one image. \n\n\nSome of these ride on a pun, some on visual metaphors, and a few let the copy do the heavy lifting. All of them are me practising the part of the job I love most: storytelling!",
+     "size": 20,
+     "weight": 400,
+     "html": "<span class=\"wt\" style=\"--w:300\">\n\nThese are a set of ads made without a client, a brief or a deadline. For each one I came up with the idea, wrote the copy and built the art myself, and I had one goal : say it in one image. <br><br><br>Some of these ride on a pun, some on visual metaphors, and a few let the copy do the heavy lifting. All of them are me practising the part of the job I love most: storytelling!</span>"
+    }
+   },
+   {
     "type": "side",
     "left": {
      "kind": "media",
