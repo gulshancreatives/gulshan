@@ -531,17 +531,6 @@ window.ALL_PROJECTS = [
   ]
  },
  {
-  "id": "visionai",
-  "title": "VisionAI",
-  "type": "UI/UX",
-  "conceptual": false,
-  "upcoming": true,
-  "pinned": true,
-  "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
-  "blocks": [],
-  "credits": []
- },
- {
   "id": "bideshini",
   "title": "Bideshini",
   "type": "2D Animation",
@@ -618,5 +607,16 @@ window.ALL_PROJECTS = [
    "Video Editing",
    "Direction"
   ]
+ },
+ {
+  "id": "visionai",
+  "title": "VisionAI",
+  "type": "UI/UX",
+  "conceptual": false,
+  "upcoming": true,
+  "pinned": true,
+  "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
+  "blocks": [],
+  "credits": []
  }
 ];
