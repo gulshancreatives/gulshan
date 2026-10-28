@@ -557,6 +557,21 @@ window.ALL_PROJECTS = [
   ],
   "blocks": [
    {
+    "type": "side",
+    "left": {
+     "kind": "media",
+     "src": "images/projects/bideshini/mvsfew4rbxl.webp",
+     "ar": 0.75
+    },
+    "right": {
+     "kind": "text",
+     "text": "The song \"Aami chini go chini\" is one of the Tagore songs I have grown up listening to. I was in my eighth standard when our music teacher in school taught us this song. I remember we would practice it daily on harmonium. \n\nBeing a popular song it was recomposed again & again by different singers. This version comes from a Bengali film called \"Adda\" \n\nFilm : Adda \n\nSong : Aami chini go chini \n\nMusic by : Suvam Moitra, Joydeep Banerjee \n\nSung by : Suvam Moitra",
+     "size": 16,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:16\">The song &quot;Aami chini go chini&quot; is one of the Tagore songs I have grown up listening to. I was in my eighth standard when our music teacher in school taught us this song. I remember we would practice it daily on harmonium. \n\nBeing a popular song it was recomposed again &amp; again by different singers. This version comes from a Bengali film called &quot;Adda&quot; \n</span>\nFilm : Adda \n\nSong : Aami chini go chini \n\nMusic by : Suvam Moitra, Joydeep Banerjee \n\nSung by : Suvam Moitra"
+    }
+   },
+   {
     "type": "slide",
     "media": "images/projects/bideshini/mvsdvbubjg0.mp4",
     "ar": 1.7778
@@ -565,6 +580,20 @@ window.ALL_PROJECTS = [
     "type": "slide",
     "media": "images/projects/bideshini/mvsdvbumtc7.mp4",
     "ar": 1.7778
+   },
+   {
+    "type": "text2",
+    "left": {
+     "text": "\n\nThe look of the video",
+     "size": 40,
+     "weight": 400,
+     "html": "<span class=\"sz\" style=\"--s:30\">\n\nThe look of the video</span>"
+    },
+    "right": {
+     "text": "\n\n\n\nThe black & white film looks is inspired from the old indian films from 1940s & 1950s. The grainy film look ads a visual style that suits the modern day rock ballad version of the song. \n\nAnd also it's easier to maintain colour contrast in greyscale hence, a black & white look was an obvious choice for a first timer in animation.",
+     "size": 20,
+     "weight": 400
+    }
    },
    {
     "type": "slide",
