@@ -1,55 +1,6 @@
 /* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.ALL_PROJECTS = [
  {
-  "id": "bideshini",
-  "title": "Bideshini",
-  "type": "2D Animation",
-  "conceptual": true,
-  "upcoming": false,
-  "pinned": false,
-  "cover": "images/projects/bideshini/mvsdux32kb6.mp4",
-  "credits": [
-   {
-    "heading": "My Role",
-    "lines": "Sketching & Animation\nDirection\nEditing"
-   }
-  ],
-  "blocks": [
-   {
-    "type": "slide",
-    "media": "images/projects/bideshini/mvsdvbubjg0.mp4",
-    "ar": 1.7778
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/bideshini/mvsdvbumtc7.mp4",
-    "ar": 1.7778
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/bideshini/mvsdvojsvu5.webp",
-    "ar": 2.397
-   },
-   {
-    "type": "slide",
-    "media": "images/projects/bideshini/mvsdvols68l.webp",
-    "ar": 2.397
-   },
-   {
-    "type": "embed",
-    "src": "https://www.youtube.com/embed/roLV1Ruf-ts?si=x2AWKnTl6nY8-sDR"
-   }
-  ],
-  "creditTags": [
-   "Animation",
-   "Music video",
-   "Storytelling",
-   "After effects",
-   "Video Editing",
-   "Direction"
-  ]
- },
- {
   "id": "navai",
   "title": "NavAI",
   "type": "Branding",
@@ -589,5 +540,54 @@ window.ALL_PROJECTS = [
   "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
   "blocks": [],
   "credits": []
+ },
+ {
+  "id": "bideshini",
+  "title": "Bideshini",
+  "type": "2D Animation",
+  "conceptual": true,
+  "upcoming": false,
+  "pinned": false,
+  "cover": "images/projects/bideshini/mvsdux32kb6.mp4",
+  "credits": [
+   {
+    "heading": "My Role",
+    "lines": "Sketching & Animation\nDirection\nEditing"
+   }
+  ],
+  "blocks": [
+   {
+    "type": "slide",
+    "media": "images/projects/bideshini/mvsdvbubjg0.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/bideshini/mvsdvbumtc7.mp4",
+    "ar": 1.7778
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/bideshini/mvsdvojsvu5.webp",
+    "ar": 2.397
+   },
+   {
+    "type": "slide",
+    "media": "images/projects/bideshini/mvsdvols68l.webp",
+    "ar": 2.397
+   },
+   {
+    "type": "embed",
+    "src": "https://www.youtube.com/embed/roLV1Ruf-ts?si=x2AWKnTl6nY8-sDR"
+   }
+  ],
+  "creditTags": [
+   "Animation",
+   "Music video",
+   "Storytelling",
+   "After effects",
+   "Video Editing",
+   "Direction"
+  ]
  }
 ];
