@@ -74,14 +74,15 @@
   });
   window.addEventListener('pageshow', function (e) { if (e.persisted) document.body.classList.remove('is-leaving'); });
 
-  /* ---- Top-right: live "online" counter + dark/light toggle ---- */
+  /* ---- Visitor presence (counted silently; the number is only shown in the admin) ---- */
   (function () {
-    var tg = document.getElementById('themeToggle'); if (!tg) return;
-    var wrap = document.createElement('div'); wrap.className = 'nav__right';
-    var on = document.createElement('span'); on.className = 'online'; on.id = 'onlineCount'; on.hidden = true; on.innerHTML = '<i></i><b>0</b> online';
-    tg.parentNode.insertBefore(wrap, tg); wrap.appendChild(on); wrap.appendChild(tg);
-    var sc = document.createElement('script'); sc.src = 'online.js'; document.body.appendChild(sc);
+    function load(src, cb) { var sc = document.createElement('script'); sc.src = src; if (cb) sc.onload = cb; document.body.appendChild(sc); }
+    load('online.js', function () { load('presence.js'); });
   })();
+
+  /* ---- Light protection for your images and videos: no right-click save, no dragging out ---- */
+  document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('img, video, .card, .blk__media, .pcover')) e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) { if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') e.preventDefault(); });
 
   /* ---- Dark / light toggle ---- */
   var btn = document.getElementById('themeToggle');
@@ -108,7 +109,8 @@
       if (!soon) card.href = 'project.html?id=' + encodeURIComponent(p.id);
       card.innerHTML = media(p.cover, p.title + ' ' + p.type + ' cover', p.poster) +
         '<div class="card__tags"><span class="tag tag--name">' + esc(p.title) + '</span>' + tagList(p.type) + '</div>' +
-        ((p.conceptual || soon) ? '<div class="card__badges">' + (p.conceptual ? '<span class="tag card__badge">Conceptual work</span>' : '') + (soon ? '<span class="tag card__badge">Coming soon</span>' : '') + '</div>' : '');
+        (soon ? '<div class="card__badges"><span class="tag card__badge card__badge--always">Coming soon</span></div>'
+          : p.conceptual ? '<div class="card__badges"><span class="tag card__badge">Personal project</span></div>' : '');
       work.appendChild(card);
     });
   }

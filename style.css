@@ -46,6 +46,9 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .card { position: relative; aspect-ratio: 16 / 9; background: #D9D9D9; overflow: hidden; border-radius: 0; isolation: isolate; transform: translateZ(0); container-type: inline-size; transition: border-radius .7s cubic-bezier(.22,.61,.36,1); }
 .card:hover, .card:focus-visible { border-radius: 1.1vw; }
 .card img, .card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card img, .card video { transition: transform 1.1s cubic-bezier(.22,.61,.36,1); will-change: transform; -webkit-user-drag: none; user-select: none; }
+.card:hover img, .card:hover video, .card:focus-visible img, .card:focus-visible video { transform: scale(1.06); }
+@media (hover: none) { .card:hover img, .card:hover video { transform: none; } }
 .card__tags { position: absolute; top: 2.6cqw; left: 2.6cqw; display: flex; gap: .8cqw; z-index: 1; }
 .tag { display: inline-flex; align-items: center; justify-content: center; height: 3.5cqw; border-radius: 99px; padding: 0 2.3cqw; font: 400 1.7cqw/1 var(--body); white-space: nowrap; flex: none; }
 .tag--name { background: #fff; color: #1c1c1c; }
@@ -67,7 +70,9 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .card--soon:hover::after { opacity: 1; }
 @media (hover: none) { .card--soon::after { opacity: 0; } }
 .card__badges { position: absolute; top: 2.6cqw; right: 2.6cqw; z-index: 2; display: flex; gap: .8cqw; }
-.card .card__badges .tag { background: #F3293F; color: #fff; opacity: 1; transform: none; transition: none; }
+.card .card__badges .tag { background: #F3293F; color: #fff; }
+.card .card__badges .card__badge--always { opacity: 1; transform: none; transition: none; }
+.card:hover .card__badges .tag:nth-child(1), .card:focus-visible .card__badges .tag:nth-child(1) { transition-delay: .2s; }
 a.card { display: block; color: inherit; }
 
 /* ---------- Project page ---------- */
@@ -137,15 +142,6 @@ body[data-page="home"] .work { padding-bottom: 2vw; }
 a.lk { color: inherit; text-decoration: none; cursor: pointer; transition: opacity .2s; }
 a.lk:hover { opacity: .65; }
 
-/* Live online counter (left of the dark-mode toggle) */
-.nav__right { position: absolute; right: var(--pad); display: flex; align-items: center; gap: 1.8vw; }
-.nav__right .toggle { position: static; }
-.online { display: inline-flex; align-items: center; gap: .55vw; font: 400 max(13px, 1.05vw) var(--body); color: var(--muted); white-space: nowrap; }
-.online b { font-weight: 400; }
-.nav--over:not(.is-solid) .online { color: rgba(255,255,255,.75); }
-.online i { width: .6vw; height: .6vw; min-width: 7px; min-height: 7px; border-radius: 50%; background: #2fbf71; box-shadow: 0 0 0 0 rgba(47,191,113,.6); animation: pulse 2s infinite; }
-@keyframes pulse { 70% { box-shadow: 0 0 0 6px rgba(47,191,113,0); } 100% { box-shadow: 0 0 0 0 rgba(47,191,113,0); } }
-
 /* ---------- Credits (end of a project page) ---------- */
 :root[data-theme="light"] { --ctag: #E6E6E6; --chead: #8c8c8c; }
 :root[data-theme="dark"]  { --ctag: #2c2c2c; --chead: #8a8a8a; }
@@ -178,9 +174,6 @@ a.lk:hover { opacity: .65; }
   .cg__l { line-height: 1.5; }
   .nav { justify-content: space-between; padding: 4vw var(--pad); }
   .toggle { position: relative; right: auto; z-index: 3; }
-  .nav__right { position: relative; right: auto; gap: 14px; z-index: 3; }
-  .online { font-size: 11px; gap: 6px; }
-  .online i { width: 7px; height: 7px; }
   .toggle__label { display: none; }
   .nav__burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 28px; height: 28px; background: none; border: 0; color: inherit; cursor: pointer; position: relative; z-index: 3; }
   .nav__burger span { display: block; height: 2px; width: 22px; background: currentColor; border-radius: 2px; transition: transform .35s ease, opacity .25s ease; }
@@ -222,3 +215,6 @@ a.lk:hover { opacity: .65; }
   .notfound { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* Light protection: media can't be dragged or selected */
+img, video { -webkit-user-drag: none; -webkit-touch-callout: none; }
