@@ -103,3 +103,7 @@ input, textarea, select { font:inherit; color:inherit; }
 .cred .tg.br { background:transparent; border:1px dashed #bbb; color:#888; font-size:12px; }
 .cred__hint .chip { margin-left:8px; padding:3px 10px; font-size:12px; }
 .cred__hint { display:flex; flex-wrap:wrap; align-items:center; }
+.live { display:inline-flex; align-items:center; gap:7px; font-size:14px; color:#777; text-transform:none; }
+.live b { font-weight:500; color:#333; }
+.live i { width:8px; height:8px; border-radius:50%; background:#2fbf71; box-shadow:0 0 0 0 rgba(47,191,113,.6); animation:lp 2s infinite; }
+@keyframes lp { 70% { box-shadow:0 0 0 6px rgba(47,191,113,0); } 100% { box-shadow:0 0 0 0 rgba(47,191,113,0); } }

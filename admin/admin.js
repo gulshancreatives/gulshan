@@ -141,7 +141,7 @@ var BAR = '<div class="bar">' + [
   ['img', IMG, 'Add image'], ['vid', PLAY, 'Add video'], ['t1', 'T', 'Text – one column'], ['t2', 'T/T', 'Text – two columns'],
   ['side', IMG + '<span>/T</span>', 'Image or video beside text'], ['embed', '&lt;/&gt;', 'Embed content']
 ].map(function (b) { return '<button data-act="ins-' + b[0] + '" title="' + b[2] + '">' + b[1] + '</button>'; }).join('') + '</div>';
-var NAV = '<header class="anav"><button class="lnk out" data-act="logout">Log out</button></header>';
+var NAV = '<header class="anav"><span class="live" hidden title="People on your website right now"><i></i><b>0</b> online now</span><button class="lnk out" data-act="logout">Log out</button></header>';
 function sw(cls, on) { return '<label class="sw"><input type="checkbox" class="' + cls + '"' + (on ? ' checked' : '') + '><i></i></label>'; }
 
 /* ---------- login ---------- */
@@ -527,6 +527,29 @@ function route() {
   window.scrollTo(0, 0);
 }
 window.addEventListener('hashchange', route);
-function boot() { busy('Loading your projects…'); load().then(route).catch(function (e) { toast('Could not load: ' + e.message, true); sessionStorage.removeItem('adminSession'); cfg = null; viewAuth(); }).then(function () { busy(); }); }
+/* ---------- live visitors (only you can see this) ---------- */
+var liveN = null, liveTimer = null, liveBase = null;
+function showLive() { $$('.live').forEach(function (l) { if (liveN === null) { l.hidden = true; return; } l.hidden = false; l.querySelector('b').textContent = liveN; }); }
+function pollLive() {
+  var STALE = 45000;
+  fetch(liveBase + '/presence/_admin.json', { method: 'PUT', body: '{".sv":"timestamp"}' })   /* gives us the server's "now" */
+    .then(function () { return fetch(liveBase + '/presence.json'); }).then(function (r) { return r.json(); }).then(function (d) {
+      d = d || {}; var now = d._admin || 0, n = 0;
+      Object.keys(d).forEach(function (k) {
+        if (k === '_admin' || typeof d[k] !== 'number') return;
+        if (now - d[k] <= STALE) n++;
+        else if (now - d[k] > 120000) fetch(liveBase + '/presence/' + k + '.json', { method: 'DELETE' }).catch(function () {});
+      });
+      liveN = n; showLive();
+    }).catch(function () {});
+}
+function startLive() {
+  if (liveTimer) return;
+  fetch('../online.js?' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (t) {
+    var m = t.match(/^var\s+DB_URL\s*=\s*['"]([^'"]+)['"]/m); if (!m) return;
+    liveBase = m[1].replace(/\/+$/, ''); pollLive(); liveTimer = setInterval(pollLive, 10000); setInterval(showLive, 1000);
+  }).catch(function () {});
+}
+function boot() { startLive(); busy('Loading your projects…'); load().then(route).catch(function (e) { toast('Could not load: ' + e.message, true); sessionStorage.removeItem('adminSession'); cfg = null; viewAuth(); }).then(function () { busy(); }); }
 try { var s = sessionStorage.getItem('adminSession'); if (s) { cfg = JSON.parse(s); boot(); } else viewAuth(); } catch (e) { viewAuth(); }
 })();
