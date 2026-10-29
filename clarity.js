@@ -1,7 +1,7 @@
 /* Microsoft Clarity: shows you recordings and heatmaps of how visitors use the site (only you can see them, in your Clarity account).
    Paste your Clarity project ID between the quotes. While it is empty, nothing is loaded.
    Example: var CLARITY_ID = 'abc123xyz9'; */
-var CLARITY_ID = '';
+var CLARITY_ID = 'z5dbqrwiew';
 
 (function () {
   if (!CLARITY_ID) return;
