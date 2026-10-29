@@ -2,7 +2,7 @@
    Paste your Firebase Realtime Database address between the quotes below (see the setup steps Claude gave you).
    While it is empty, the counter stays hidden and nothing is sent anywhere.
    Example: var DB_URL = 'https://my-site-default-rtdb.firebaseio.com'; */
-var DB_URL = '';
+var DB_URL = 'https://gulshan-portfolio-95d07-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
 (function () {
   if (!DB_URL) return;
