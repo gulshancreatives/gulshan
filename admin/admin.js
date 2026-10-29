@@ -550,6 +550,6 @@ function startLive() {
     liveBase = m[1].replace(/\/+$/, ''); pollLive(); liveTimer = setInterval(pollLive, 10000); setInterval(showLive, 1000);
   }).catch(function () {});
 }
-function boot() { startLive(); busy('Loading your projects…'); load().then(route).catch(function (e) { toast('Could not load: ' + e.message, true); sessionStorage.removeItem('adminSession'); cfg = null; viewAuth(); }).then(function () { busy(); }); }
+function boot() { try { localStorage.setItem('noTrack', '1'); } catch (e) {} startLive(); busy('Loading your projects…'); load().then(route).catch(function (e) { toast('Could not load: ' + e.message, true); sessionStorage.removeItem('adminSession'); cfg = null; viewAuth(); }).then(function () { busy(); }); }
 try { var s = sessionStorage.getItem('adminSession'); if (s) { cfg = JSON.parse(s); boot(); } else viewAuth(); } catch (e) { viewAuth(); }
 })();
