@@ -47,7 +47,6 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .card:hover, .card:focus-visible { border-radius: 1.1vw; }
 .card img, .card video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card__tags { position: absolute; top: 2.6cqw; left: 2.6cqw; display: flex; gap: .8cqw; z-index: 1; }
-.card__conceptual { position: absolute; bottom: 2.6cqw; left: 2.6cqw; z-index: 1; }
 .tag { display: inline-flex; align-items: center; justify-content: center; height: 3.5cqw; border-radius: 99px; padding: 0 2.3cqw; font: 400 1.7cqw/1 var(--body); white-space: nowrap; flex: none; }
 .tag--name { background: #fff; color: #1c1c1c; }
 .tag--type, .tag--concept { background: rgba(0,0,0,.3); color: #fff; }
@@ -57,7 +56,6 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .card:hover .tag:nth-child(1), .card:focus-visible .tag:nth-child(1) { transition-delay: .12s; }
 .card:hover .tag:nth-child(2), .card:focus-visible .tag:nth-child(2) { transition-delay: .2s; }
 .card:hover .tag:nth-child(3), .card:focus-visible .tag:nth-child(3) { transition-delay: .28s; }
-.card:hover .card__conceptual, .card:focus-visible .card__conceptual { transition-delay: .2s; }
 @media (hover: none) { .card .tag { opacity: 1; transform: none; } .card { border-radius: 3vw; } }
 
 .work--page { padding-top: 1.2vw; padding-bottom: 9vw; }
@@ -68,7 +66,8 @@ body[data-page="home"] main, body[data-page="work"] main { padding-top: var(--na
 .card--soon::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .6s ease; pointer-events: none; z-index: 0; }
 .card--soon:hover::after { opacity: 1; }
 @media (hover: none) { .card--soon::after { opacity: 0; } }
-.card .card__soon { position: absolute; top: 2.6cqw; right: 2.6cqw; z-index: 2; background: #F3293F; color: #fff; opacity: 1; transform: none; transition: none; }
+.card__badges { position: absolute; top: 2.6cqw; right: 2.6cqw; z-index: 2; display: flex; gap: .8cqw; }
+.card .card__badges .tag { background: #F3293F; color: #fff; opacity: 1; transform: none; transition: none; }
 a.card { display: block; color: inherit; }
 
 /* ---------- Project page ---------- */
@@ -134,6 +133,19 @@ body[data-page="home"] .work { padding-bottom: 2vw; }
 .footer__big { margin-top: 7vw; font: 400 10vw/.9 var(--display); color: var(--ghost); white-space: nowrap; padding-bottom: 1.5vw; }
 .footer__big span { display: inline-block; }
 
+/* Links typed inside project text: clickable, no underline */
+a.lk { color: inherit; text-decoration: none; cursor: pointer; transition: opacity .2s; }
+a.lk:hover { opacity: .65; }
+
+/* Live online counter (left of the dark-mode toggle) */
+.nav__right { position: absolute; right: var(--pad); display: flex; align-items: center; gap: 1.8vw; }
+.nav__right .toggle { position: static; }
+.online { display: inline-flex; align-items: center; gap: .55vw; font: 400 max(13px, 1.05vw) var(--body); color: var(--muted); white-space: nowrap; }
+.online b { font-weight: 400; }
+.nav--over:not(.is-solid) .online { color: rgba(255,255,255,.75); }
+.online i { width: .6vw; height: .6vw; min-width: 7px; min-height: 7px; border-radius: 50%; background: #2fbf71; box-shadow: 0 0 0 0 rgba(47,191,113,.6); animation: pulse 2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 6px rgba(47,191,113,0); } 100% { box-shadow: 0 0 0 0 rgba(47,191,113,0); } }
+
 /* ---------- Credits (end of a project page) ---------- */
 :root[data-theme="light"] { --ctag: #E6E6E6; --chead: #8c8c8c; }
 :root[data-theme="dark"]  { --ctag: #2c2c2c; --chead: #8a8a8a; }
@@ -166,6 +178,9 @@ body[data-page="home"] .work { padding-bottom: 2vw; }
   .cg__l { line-height: 1.5; }
   .nav { justify-content: space-between; padding: 4vw var(--pad); }
   .toggle { position: relative; right: auto; z-index: 3; }
+  .nav__right { position: relative; right: auto; gap: 14px; z-index: 3; }
+  .online { font-size: 11px; gap: 6px; }
+  .online i { width: 7px; height: 7px; }
   .toggle__label { display: none; }
   .nav__burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 28px; height: 28px; background: none; border: 0; color: inherit; cursor: pointer; position: relative; z-index: 3; }
   .nav__burger span { display: block; height: 2px; width: 22px; background: currentColor; border-radius: 2px; transition: transform .35s ease, opacity .25s ease; }
