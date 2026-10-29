@@ -554,10 +554,10 @@ window.ALL_PROJECTS = [
      "html": "<span class=\"wt\" style=\"--w:500\"><span class=\"wt\" style=\"--w:400\">\nMy First Attempt at 2D Animation</span></span>"
     },
     "right": {
-     "text": "\n\nI watched an Indian animated film Wade by Upamanyu Bhattacharyya and Kalp Sanghvi. It inspired me to explore 2D animation. \nFor my very first animation project, I decided to write and develop a music video. Since the music was already taken care of, I could focus on visual storytelling which is what I was most excited about.",
+     "text": "\n\nI watched an Indian animated film Wade by Upamanyu Bhattacharyya and Kalp Sanghvi. It inspired me to explore 2D animation. \n\nFor my very first animation project, I decided to write and develop a music video. Since the music was already taken care of, I could focus on visual storytelling which is what I was most excited about.",
      "size": 20,
      "weight": 400,
-     "html": "<span class=\"sz\" style=\"--s:18\"><span class=\"wt\" style=\"--w:300\">\n\nI watched an Indian animated film Wade by Upamanyu Bhattacharyya and Kalp Sanghvi. It inspired me to explore 2D animation. \nFor my very first animation project, I decided to write and develop a music video. Since the music was already taken care of, I could focus on visual storytelling which is what I was most excited about.\n\n\n</span></span>"
+     "html": "<span class=\"sz\" style=\"--s:18\"><span class=\"wt\" style=\"--w:300\">\n\nI watched an Indian animated film Wade by Upamanyu Bhattacharyya and Kalp Sanghvi. It inspired me to explore 2D animation. \n\nFor my very first animation project, I decided to write and develop a music video. Since the music was already taken care of, I could focus on visual storytelling which is what I was most excited about.\n\n\n</span></span>"
     }
    },
    {
