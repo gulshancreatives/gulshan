@@ -47,7 +47,7 @@ body::after { content: ''; position: fixed; inset: -50%; z-index: 90; pointer-ev
 .hud, .rail { transition: opacity .6s ease; }
 .hud.hide, .rail.hide { opacity: 0; }
 /* solid band behind the top labels so scrolling text never runs through them */
-.hud::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: calc(100% + 40px); z-index: -1; background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 72%, transparent 100%); transition: background .9s ease; }
+.hud::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: calc(100% + 14px); z-index: -1; background: var(--bg); transition: background .9s ease; }
 .hud__who { font: 600 13px/1.2 var(--sans); letter-spacing: .01em; }
 .hud__clock { text-align: right; }
 .hud__time { font: 800 clamp(22px, 2.3vw, 34px)/1 var(--sans); font-stretch: 100%; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
