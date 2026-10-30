@@ -46,6 +46,8 @@ body::after { content: ''; position: fixed; inset: -50%; z-index: 90; pointer-ev
 .hud { position: fixed; left: 0; right: 0; top: 0; z-index: 80; display: flex; justify-content: space-between; align-items: flex-start; padding: 22px var(--pad) 0; pointer-events: none; font-family: var(--sans); }
 .hud, .rail { transition: opacity .6s ease; }
 .hud.hide, .rail.hide { opacity: 0; }
+/* solid band behind the top labels so scrolling text never runs through them */
+.hud::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: calc(100% + 40px); z-index: -1; background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 72%, transparent 100%); transition: background .9s ease; }
 .hud__who { font: 600 13px/1.2 var(--sans); letter-spacing: .01em; }
 .hud__clock { text-align: right; }
 .hud__time { font: 800 clamp(22px, 2.3vw, 34px)/1 var(--sans); font-stretch: 100%; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
@@ -323,15 +325,15 @@ body::after { content: ''; position: fixed; inset: -50%; z-index: 90; pointer-ev
 <section class="win" id="s-win" data-t="blue" data-from="Sun 00:00" data-to="Sun 19:00" data-phase="Entries close at 7pm">
   <div class="win__head">
     <h2 class="d"><span>Win the weekend.</span><span>Take the stage.</span></h2>
-    <p class="lead" data-scrub>A weekend of work shouldn’t end with a thank-you email. So here is what the winner gets instead: a room full of people looking at their idea, and a typeface to play with long after the 48 hours are up.</p>
+    <p class="lead" data-scrub>Every competition ends with winners, and ours will too. But 48 hours of relentless design sprint deserves more than just recognition. We can use this opportunity to bring in Koto’s own initiatives, OFF Live and CC Type. Here’s how:</p>
   </div>
   <div class="prizes">
     <article class="prize prize--y">
       <div class="prize__media"><video src="a/off-live.mp4" poster="a/off-poster.jpg" muted loop playsinline preload="metadata" aria-label="OFF Live"></video></div>
       <div class="prize__body">
         <div class="k"><span>Prize 01</span><span>Winning entry</span></div>
-        <h3>Your idea, live on stage.</h3>
-        <p>The winning entry gets showcased at OFF Live, Koto’s growing mix of editorial content and live events. Your work, on a big screen, in front of a real crowd.</p>
+        <h3>We can provide winning teams an audience</h3>
+        <p>Winners get an opportunity to present their work at an OFF Live event. This way, the work gets the audience it deserves.</p>
         <span class="pill">OFF Live</span>
       </div>
     </article>
@@ -339,8 +341,8 @@ body::after { content: ''; position: fixed; inset: -50%; z-index: 90; pointer-ev
       <div class="prize__media"><img src="a/cc-timeline.webp" alt="Type specimen set in CC Timeline"></div>
       <div class="prize__body">
         <div class="k"><span>Prize 02</span><span>Grand prize winner</span></div>
-        <h3>A font for your own projects.</h3>
-        <p>The grand prize winner also receives a personal projects license for the font CC Timeline. Set your posters, zines and side projects in it, no brief required.</p>
+        <h3>What’s better to award a designer than a font?</h3>
+        <p>The grand prize winner (first prize) can be awarded a personal projects license for the font CC Timeline.</p>
         <span class="pill">CC Timeline</span>
       </div>
     </article>
