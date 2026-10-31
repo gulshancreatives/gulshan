@@ -1,18 +1,6 @@
 /* Managed by the admin panel at /admin – use it to add, edit, reorder or delete projects. */
 window.ALL_PROJECTS = [
  {
-  "id": "grow",
-  "title": "Grow",
-  "type": "",
-  "conceptual": false,
-  "upcoming": true,
-  "pinned": true,
-  "cover": "images/projects/grow/mvx1bxjy28i.webp",
-  "credits": [],
-  "blocks": [],
-  "creditTags": []
- },
- {
   "id": "navai",
   "title": "NavAI",
   "type": "Branding",
@@ -636,12 +624,24 @@ window.ALL_PROJECTS = [
   ]
  },
  {
+  "id": "grow",
+  "title": "Grow",
+  "type": "",
+  "conceptual": false,
+  "upcoming": true,
+  "pinned": true,
+  "cover": "images/projects/grow/mvx1bxjy28i.webp",
+  "credits": [],
+  "blocks": [],
+  "creditTags": []
+ },
+ {
   "id": "visionai",
   "title": "VisionAI",
   "type": "UI/UX",
   "conceptual": false,
   "upcoming": true,
-  "pinned": true,
+  "pinned": false,
   "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
   "blocks": [],
   "credits": []
