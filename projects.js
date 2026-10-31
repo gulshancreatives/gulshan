@@ -629,7 +629,7 @@ window.ALL_PROJECTS = [
   "type": "",
   "conceptual": false,
   "upcoming": true,
-  "pinned": true,
+  "pinned": false,
   "cover": "images/projects/grow/mvx1bxjy28i.webp",
   "credits": [],
   "blocks": [],
@@ -641,7 +641,7 @@ window.ALL_PROJECTS = [
   "type": "UI/UX",
   "conceptual": false,
   "upcoming": true,
-  "pinned": false,
+  "pinned": true,
   "cover": "images/projects/visionai/mvo8dwql0qs.mp4",
   "blocks": [],
   "credits": []
