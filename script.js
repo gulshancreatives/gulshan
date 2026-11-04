@@ -79,6 +79,7 @@
     function load(src, cb) { var sc = document.createElement('script'); sc.src = src; if (cb) sc.onload = cb; document.body.appendChild(sc); }
     load('online.js', function () { load('presence.js'); });
     load('clarity.js');
+    load('ga.js');
   })();
 
   /* ---- Light protection for your images and videos: no right-click save, no dragging out ---- */
