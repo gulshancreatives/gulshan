@@ -1,7 +1,7 @@
 /* Google Analytics (GA4): shows where visitors come from, which pages and projects they open, and trends over time.
    Paste your Measurement ID (it starts with G-) between the quotes. While it is empty, nothing is loaded.
    Example: var GA_ID = 'G-ABC123DEF4'; */
-var GA_ID = '';
+var GA_ID = 'G-DV4D3FF9XS';
 
 (function () {
   if (!GA_ID) return;
